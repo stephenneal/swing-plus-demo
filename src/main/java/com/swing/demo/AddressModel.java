@@ -1,4 +1,4 @@
-package com.swing.demo.address;
+package com.swing.demo;
 
 import com.swing.plus.mvc.DualModePresentationModel;
 import com.swing.plus.mvc.ReadOnlyParticipant;

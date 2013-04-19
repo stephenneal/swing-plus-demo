@@ -1,4 +1,4 @@
-package com.swing.demo.address;
+package com.swing.demo;
 
 import javax.swing.JLabel;
 import javax.swing.JTextField;
@@ -58,22 +58,21 @@ public class AddressPanel extends PlusJPanel<AddressModel> {
         bind(StateBinding.editable(model, "suburbEditable", this.suburb));
 
         // Lay out the components.
-        DefaultFormBuilder builder = new DefaultFormBuilder(new FormLayout(LayoutFactory2.componentColumnSpec(1, 1),
+        DefaultFormBuilder builder = new DefaultFormBuilder(new FormLayout(LayoutFactory2.componentColumnSpec(2, 1, 2),
                         LayoutFactory2.relatedRowSpec(5)), this);
         builder.append(this.address1Label);
-        builder.append(this.address1);
+        builder.append(this.address1, 5);
         builder.nextLine(2);
         builder.append(this.address2Label);
-        builder.append(this.address2);
+        builder.append(this.address2, 5);
         builder.nextLine(2);
         builder.append(this.suburbLabel);
-        builder.append(this.suburb);
-        builder.nextLine(2);
-        builder.append(this.stateLabel);
-        builder.append(this.state);
+        builder.append(this.suburb, 5);
         builder.nextLine(2);
         builder.append(this.postcodeLabel);
         builder.append(this.postcode);
+        builder.append(this.stateLabel);
+        builder.append(this.state);
     }
 
 }

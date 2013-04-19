@@ -1,4 +1,4 @@
-package com.swing.demo.person;
+package com.swing.demo;
 
 import java.util.Date;
 

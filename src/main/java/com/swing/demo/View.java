@@ -14,11 +14,7 @@ import com.jgoodies.forms.builder.DefaultFormBuilder;
 import com.jgoodies.forms.factories.Borders;
 import com.jgoodies.forms.layout.FormLayout;
 import com.swing.binding.bbb.BindingService;
-import com.swing.demo.address.AddressModel;
-import com.swing.demo.address.AddressPanel;
 import com.swing.demo.layout.LayoutFactory2;
-import com.swing.demo.person.PersonModel;
-import com.swing.demo.person.PersonPanel;
 import com.swing.plus.mvc.DualModePresentationModel.ViewMode;
 
 @SuppressWarnings("serial")
@@ -69,12 +65,25 @@ public class View extends JPanel {
         AddressPanel addressPanel = new AddressPanel(aModel, bindingService);
         setDefaultBorder(addressPanel, addressPanel.getModel().getTitle());
 
+        ContactsModel cModel = new ContactsModel();
+        cModel.setEmail("blah@blah.com");
+        cModel.setFax("08 8111 1111");
+        cModel.setPhoneHome("08 8111 1112");
+        cModel.setPhoneWork("08 8111 1111");
+        cModel.setPhoneMobile("0444 111 111");
+        cModel.setTitle("Contact");
+        cModel.setMode(ViewMode.READ_ONLY);
+        ContactsPanel contactsPanel = new ContactsPanel(cModel, bindingService);
+        setDefaultBorder(contactsPanel, contactsPanel.getModel().getTitle());
+
         JPanel panel = new JPanel();
         panel.setBorder(Borders.DIALOG);
         DefaultFormBuilder builder = new DefaultFormBuilder(new FormLayout(LayoutFactory2.relatedColumnSpec(2, 1, 2),
-                        LayoutFactory2.relatedRowSpec(1)), panel);
+                        LayoutFactory2.relatedRowSpec(2)), panel);
         builder.append(personPanel);
         builder.append(addressPanel);
+        builder.nextLine(2);
+        builder.append(contactsPanel);
         return panel;
     }
 
