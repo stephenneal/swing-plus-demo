@@ -5,14 +5,14 @@ import javax.swing.JTextField;
 
 import com.jgoodies.forms.builder.DefaultFormBuilder;
 import com.jgoodies.forms.layout.FormLayout;
-import com.swing.binding.bbb.AbstractPanel;
 import com.swing.binding.bbb.BindingService;
 import com.swing.binding.bbb.StateBinding;
 import com.swing.binding.bbb.TextBinding;
 import com.swing.demo.layout.LayoutFactory2;
+import com.swing.plus.mvc.PlusJPanel;
 
 @SuppressWarnings("serial")
-public class AddressPanel extends AbstractPanel<AddressModel> {
+public class AddressPanel extends PlusJPanel<AddressModel> {
 
     private JLabel address1Label;
     private JTextField address1;
@@ -29,27 +29,32 @@ public class AddressPanel extends AbstractPanel<AddressModel> {
         super(model, bindingService);
 
         // Create all the Swing components
-        this.address1Label = newFieldLabel("Address Line 1");
+        this.address1Label = newFieldLabel();
         this.address1 = new JTextField();
-        this.address2Label = newFieldLabel("Address Line 2");
+        this.address2Label = newFieldLabel();
         this.address2 = new JTextField();
-        this.postcodeLabel = newFieldLabel("Postcode");
+        this.postcodeLabel = newFieldLabel();
         this.postcode = new JTextField();
-        this.stateLabel = newFieldLabel("State");
+        this.stateLabel = newFieldLabel();
         this.state = new JTextField();
-        this.suburbLabel = newFieldLabel("Suburb");
+        this.suburbLabel = newFieldLabel();
         this.suburb = new JTextField();
 
         // Bind the Swing components to the model
         bind(TextBinding.text(model, "address1", this.address1));
+        bind(TextBinding.text(model, "address1Label", this.address1Label));
         bind(StateBinding.editable(model, "address1Editable", this.address1));
         bind(TextBinding.text(model, "address2", this.address2));
+        bind(TextBinding.text(model, "address2Label", this.address2Label));
         bind(StateBinding.editable(model, "address2Editable", this.address2));
         bind(TextBinding.text(model, "postcode", this.postcode));
+        bind(TextBinding.text(model, "postcodeLabel", this.postcodeLabel));
         bind(StateBinding.editable(model, "postcodeEditable", this.postcode));
         bind(TextBinding.text(model, "state", this.state));
+        bind(TextBinding.text(model, "stateLabel", this.stateLabel));
         bind(StateBinding.editable(model, "stateEditable", this.state));
         bind(TextBinding.text(model, "suburb", this.suburb));
+        bind(TextBinding.text(model, "suburbLabel", this.suburbLabel));
         bind(StateBinding.editable(model, "suburbEditable", this.suburb));
 
         // Lay out the components.
@@ -71,9 +76,4 @@ public class AddressPanel extends AbstractPanel<AddressModel> {
         builder.append(this.postcode);
     }
 
-    private static JLabel newFieldLabel(String label) {
-        JLabel l = new JLabel(label);
-        // l.setBorder(BorderFactory.createEtchedBorder());
-        return l;
-    }
 }

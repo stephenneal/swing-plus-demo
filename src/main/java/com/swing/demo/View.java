@@ -19,6 +19,7 @@ import com.swing.demo.address.AddressPanel;
 import com.swing.demo.layout.LayoutFactory2;
 import com.swing.demo.person.PersonModel;
 import com.swing.demo.person.PersonPanel;
+import com.swing.plus.mvc.DualModePresentationModel.ViewMode;
 
 @SuppressWarnings("serial")
 public class View extends JPanel {
@@ -48,11 +49,12 @@ public class View extends JPanel {
     private static JPanel createPanel(BindingService bindingService) {
         PersonModel pModel = new PersonModel();
         pModel.setFirstName("Geoff");
-        pModel.setMiddleNames("Robert");
+        pModel.setOtherNames("Robert");
         pModel.setSurname("Giles");
         pModel.setDateOfBirth(Calendar.getInstance().getTime());
         pModel.setId("A001");
         pModel.setTitle("Person");
+        pModel.setMode(ViewMode.READ_ONLY);
         PersonPanel personPanel = new PersonPanel(pModel, bindingService);
         setDefaultBorder(personPanel, personPanel.getModel().getTitle());
 
@@ -63,12 +65,13 @@ public class View extends JPanel {
         aModel.setState("SA");
         aModel.setPostcode("5000");
         aModel.setTitle("Address");
+        aModel.setMode(ViewMode.READ_ONLY);
         AddressPanel addressPanel = new AddressPanel(aModel, bindingService);
         setDefaultBorder(addressPanel, addressPanel.getModel().getTitle());
 
         JPanel panel = new JPanel();
         panel.setBorder(Borders.DIALOG);
-        DefaultFormBuilder builder = new DefaultFormBuilder(new FormLayout(LayoutFactory2.componentColumnSpec(2, 1, 2),
+        DefaultFormBuilder builder = new DefaultFormBuilder(new FormLayout(LayoutFactory2.relatedColumnSpec(2, 1, 2),
                         LayoutFactory2.relatedRowSpec(1)), panel);
         builder.append(personPanel);
         builder.append(addressPanel);

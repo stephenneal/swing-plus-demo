@@ -18,9 +18,9 @@ import javax.swing.SwingUtilities;
 import org.jdesktop.beansbinding.Binding;
 import org.jdesktop.observablecollections.ObservableList;
 
-import com.swing.binding.bbb.AbstractModel;
 import com.swing.binding.bbb.BindingService;
 import com.swing.binding.bbb.TextBinding;
+import com.swing.binding.bbb.mvc.PresentationModel;
 import com.swing.plus.PanelFactory;
 
 @SuppressWarnings("serial")
@@ -158,7 +158,7 @@ public class SwingBindingDemo extends JPanel {
     /**
      * Model for this prototype, must be public for BetterBeansBinding to work
      */
-    public static class BindingPrototypeModel extends AbstractModel {
+    public static class BindingPrototypeModel extends PresentationModel {
 
         public static BindingPrototypeModel newInstance() {
             BindingPrototypeModel bean = new BindingPrototypeModel();

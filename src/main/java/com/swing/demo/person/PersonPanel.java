@@ -5,14 +5,14 @@ import javax.swing.JTextField;
 
 import com.jgoodies.forms.builder.DefaultFormBuilder;
 import com.jgoodies.forms.layout.FormLayout;
-import com.swing.binding.bbb.AbstractPanel;
 import com.swing.binding.bbb.BindingService;
 import com.swing.binding.bbb.StateBinding;
 import com.swing.binding.bbb.TextBinding;
 import com.swing.demo.layout.LayoutFactory2;
+import com.swing.plus.mvc.PlusJPanel;
 
 @SuppressWarnings("serial")
-public class PersonPanel extends AbstractPanel<PersonModel> {
+public class PersonPanel extends PlusJPanel<PersonModel> {
 
     private JLabel dateOfBirthLabel;
     private JTextField dateOfBirth;
@@ -20,8 +20,8 @@ public class PersonPanel extends AbstractPanel<PersonModel> {
     private JTextField id;
     private JLabel surnameLabel;
     private JTextField surname;
-    private JLabel middleNamesLabel;
-    private JTextField middleNames;
+    private JLabel otherNamesLabel;
+    private JTextField otherNames;
     private JLabel firstNameLabel;
     private JTextField firstName;
 
@@ -29,27 +29,32 @@ public class PersonPanel extends AbstractPanel<PersonModel> {
         super(model, bindingService);
 
         // Create all the Swing components
-        this.dateOfBirthLabel = newFieldLabel("Date of Birth");
+        this.dateOfBirthLabel = newFieldLabel();
         this.dateOfBirth = new JTextField();
-        this.idLabel = newFieldLabel("Id");
+        this.idLabel = newFieldLabel();
         this.id = new JTextField();
-        this.firstNameLabel = newFieldLabel("First name");
+        this.firstNameLabel = newFieldLabel();
         this.firstName = new JTextField();
-        this.middleNamesLabel = newFieldLabel("Middle name(s)");
-        this.middleNames = new JTextField();
-        this.surnameLabel = newFieldLabel("Surname");
+        this.otherNamesLabel = newFieldLabel();
+        this.otherNames = new JTextField();
+        this.surnameLabel = newFieldLabel();
         this.surname = new JTextField();
 
         // Bind the Swing components to the model
         bind(TextBinding.text(model, "dateOfBirth", this.dateOfBirth));
+        bind(TextBinding.text(model, "dateOfBirthLabel", this.dateOfBirthLabel));
         bind(StateBinding.editable(model, "dateOfBirthEditable", this.dateOfBirth));
         bind(TextBinding.text(model, "id", this.id));
+        bind(TextBinding.text(model, "idLabel", this.idLabel));
         bind(StateBinding.editable(model, "idEditable", this.id));
         bind(TextBinding.text(model, "firstName", this.firstName));
+        bind(TextBinding.text(model, "firstNameLabel", this.firstNameLabel));
         bind(StateBinding.editable(model, "firstNameEditable", this.firstName));
-        bind(TextBinding.text(model, "middleNames", this.middleNames));
-        bind(StateBinding.editable(model, "middleNamesEditable", this.middleNames));
+        bind(TextBinding.text(model, "otherNames", this.otherNames));
+        bind(TextBinding.text(model, "otherNamesLabel", this.otherNamesLabel));
+        bind(StateBinding.editable(model, "otherNamesEditable", this.otherNames));
         bind(TextBinding.text(model, "surname", this.surname));
+        bind(TextBinding.text(model, "surnameLabel", this.surnameLabel));
         bind(StateBinding.editable(model, "surnameEditable", this.surname));
 
         // Lay out the components.
@@ -58,8 +63,8 @@ public class PersonPanel extends AbstractPanel<PersonModel> {
         builder.append(this.firstNameLabel);
         builder.append(this.firstName);
         builder.nextLine(2);
-        builder.append(this.middleNamesLabel);
-        builder.append(this.middleNames);
+        builder.append(this.otherNamesLabel);
+        builder.append(this.otherNames);
         builder.nextLine(2);
         builder.append(this.surnameLabel);
         builder.append(this.surname);
@@ -71,9 +76,4 @@ public class PersonPanel extends AbstractPanel<PersonModel> {
         builder.append(this.id);
     }
 
-    private static JLabel newFieldLabel(String label) {
-        JLabel l = new JLabel(label);
-        // l.setBorder(BorderFactory.createEtchedBorder());
-        return l;
-    }
 }
