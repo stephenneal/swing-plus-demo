@@ -21,7 +21,7 @@ import org.jdesktop.observablecollections.ObservableList;
 import com.swing.binding.bbb.AbstractModel;
 import com.swing.binding.bbb.BindingService;
 import com.swing.binding.bbb.TextBinding;
-import com.swing.plus.LayoutFactory;
+import com.swing.plus.PanelFactory;
 
 @SuppressWarnings("serial")
 public class SwingBindingDemo extends JPanel {
@@ -131,21 +131,21 @@ public class SwingBindingDemo extends JPanel {
 
         // Lay the components. For simplicity this just uses box layout, its not pretty. Better Swing layouts
         // include MigLayout and JGoodies FormLayout but that is outside the scope of this prototype.
-        JPanel input = LayoutFactory.boxY();
+        JPanel input = PanelFactory.boxY();
         input.setBorder(BorderFactory.createTitledBorder("Input"));
-        input.add(LayoutFactory.boxX(this.field1Label, this.field1));
-        input.add(LayoutFactory.boxX(this.field2Label, this.field2));
-        input.add(LayoutFactory.boxX(this.field3Label, this.field3));
-        input.add(LayoutFactory.boxX(this.field4Label, this.field4));
+        input.add(PanelFactory.boxX(this.field1Label, this.field1));
+        input.add(PanelFactory.boxX(this.field2Label, this.field2));
+        input.add(PanelFactory.boxX(this.field3Label, this.field3));
+        input.add(PanelFactory.boxX(this.field4Label, this.field4));
 
-        JPanel output = LayoutFactory.boxY();
+        JPanel output = PanelFactory.boxY();
         output.setBorder(BorderFactory.createTitledBorder("Output"));
-        output.add(LayoutFactory.boxX(this.field1OutputLabel, this.field1Output));
-        output.add(LayoutFactory.boxX(this.field2OutputLabel, this.field2Output));
-        output.add(LayoutFactory.boxX(this.field3OutputLabel, this.field3Output));
-        output.add(LayoutFactory.boxX(this.field4OutputLabel, this.field4Output));
+        output.add(PanelFactory.boxX(this.field1OutputLabel, this.field1Output));
+        output.add(PanelFactory.boxX(this.field2OutputLabel, this.field2Output));
+        output.add(PanelFactory.boxX(this.field3OutputLabel, this.field3Output));
+        output.add(PanelFactory.boxX(this.field4OutputLabel, this.field4Output));
 
-        LayoutFactory.box(this, BoxLayout.Y_AXIS, input, output);
+        PanelFactory.box(this, BoxLayout.Y_AXIS, input, output);
     }
 
     private void bind(Binding<?, ?, ?, ?> binding) {

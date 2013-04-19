@@ -1,30 +1,31 @@
 package com.swing.demo.address;
 
-import com.swing.binding.bbb.AbstractModel;
 import com.swing.binding.bbb.AbstractPanel;
+import com.swing.binding.bbb.AbstractPanelModel;
 
 /**
  * Model for the {@link AbstractPanel}.
  */
-public class AddressModel extends AbstractModel {
+public class AddressModel extends AbstractPanelModel {
 
     private String address1;
     private String address2;
+    private String postcode;
     private String suburb;
     private String state;
-    private String postcode;
 
     private boolean address1Editable;
     private boolean address2Editable;
+    private boolean postcodeEditable;
     private boolean suburbEditable;
     private boolean stateEditable;
-    private boolean postcodeEditable;
-
-    // private ObservableList<String> stringList;
 
     public AddressModel() {
         super();
     }
+
+    // Data properties
+    // -----------------------------------------------------------------------------------------------------------------
 
     public String getAddress1() {
         return this.address1;
@@ -46,6 +47,16 @@ public class AddressModel extends AbstractModel {
         getPropertyChangeSupport().firePropertyChange("address2", oldValue, newValue);
     }
 
+    public String getPostcode() {
+        return this.postcode;
+    }
+
+    public void setPostcode(String newValue) {
+        String oldValue = this.postcode;
+        this.postcode = newValue;
+        getPropertyChangeSupport().firePropertyChange("postcode", oldValue, newValue);
+    }
+
     public String getSuburb() {
         return this.suburb;
     }
@@ -65,36 +76,6 @@ public class AddressModel extends AbstractModel {
         this.state = newValue;
         getPropertyChangeSupport().firePropertyChange("state", oldValue, newValue);
     }
-
-    public String getPostcode() {
-        return this.postcode;
-    }
-
-    public void setPostcode(String newValue) {
-        String oldValue = this.postcode;
-        this.postcode = newValue;
-        getPropertyChangeSupport().firePropertyChange("postcode", oldValue, newValue);
-    }
-
-    // public ObservableList<AddressModel> getTestBeans() {
-    // return this.testBeans;
-    // }
-    //
-    // public void setTestBeans(ObservableList<AddressModel> newValue) {
-    // ObservableList<AddressModel> oldValue = this.testBeans;
-    // this.testBeans = newValue;
-    // getPropertyChangeSupport().firePropertyChange("testBeans", oldValue, newValue);
-    // }
-    //
-    // public ObservableList<AddressModel> getTestBeansSelected() {
-    // return this.testBeansSelected;
-    // }
-    //
-    // public void setTestBeansSelected(ObservableList<AddressModel> newValue) {
-    // ObservableList<AddressModel> oldValue = this.testBeansSelected;
-    // this.testBeansSelected = newValue;
-    // getPropertyChangeSupport().firePropertyChange("testBeansSelected", oldValue, newValue);
-    // }
 
     // State properties
     // -----------------------------------------------------------------------------------------------------------------
@@ -148,4 +129,5 @@ public class AddressModel extends AbstractModel {
         this.stateEditable = newValue;
         getPropertyChangeSupport().firePropertyChange("stateEditable", oldValue, newValue);
     }
+
 }

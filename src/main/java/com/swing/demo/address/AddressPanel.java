@@ -4,7 +4,7 @@ import javax.swing.JLabel;
 import javax.swing.JTextField;
 
 import com.jgoodies.forms.builder.DefaultFormBuilder;
-import com.jgoodies.forms.factories.Borders;
+import com.jgoodies.forms.layout.FormLayout;
 import com.swing.binding.bbb.AbstractPanel;
 import com.swing.binding.bbb.BindingService;
 import com.swing.binding.bbb.StateBinding;
@@ -29,15 +29,15 @@ public class AddressPanel extends AbstractPanel<AddressModel> {
         super(model, bindingService);
 
         // Create all the Swing components
-        this.address1Label = new JLabel("Address Line 1");
+        this.address1Label = newFieldLabel("Address Line 1");
         this.address1 = new JTextField();
-        this.address2Label = new JLabel("Address Line 2");
+        this.address2Label = newFieldLabel("Address Line 2");
         this.address2 = new JTextField();
-        this.postcodeLabel = new JLabel("Postcode");
+        this.postcodeLabel = newFieldLabel("Postcode");
         this.postcode = new JTextField();
-        this.stateLabel = new JLabel("State");
+        this.stateLabel = newFieldLabel("State");
         this.state = new JTextField();
-        this.suburbLabel = new JLabel("Suburb");
+        this.suburbLabel = newFieldLabel("Suburb");
         this.suburb = new JTextField();
 
         // Bind the Swing components to the model
@@ -53,7 +53,8 @@ public class AddressPanel extends AbstractPanel<AddressModel> {
         bind(StateBinding.editable(model, "suburbEditable", this.suburb));
 
         // Lay out the components.
-        DefaultFormBuilder builder = new DefaultFormBuilder(LayoutFactory2.defaultFormLayout(2, 5), this);
+        DefaultFormBuilder builder = new DefaultFormBuilder(new FormLayout(LayoutFactory2.componentColumnSpec(1, 1),
+                        LayoutFactory2.relatedRowSpec(5)), this);
         builder.append(this.address1Label);
         builder.append(this.address1);
         builder.nextLine(2);
@@ -68,19 +69,11 @@ public class AddressPanel extends AbstractPanel<AddressModel> {
         builder.nextLine(2);
         builder.append(this.postcodeLabel);
         builder.append(this.postcode);
-        // setLayout(LayoutFactory2.defaultFormLayout(1, 5));
-        // add(this.address1Label, "1, 1");
-        // add(this.address1, "3, 1");
-        // add(this.address2Label, "1, 3");
-        // add(this.address2, "3, 3");
-        // add(this.suburbLabel, "1, 5");
-        // add(this.suburb, "3, 5");
-        // add(this.stateLabel, "1, 7");
-        // add(this.state, "3, 7");
-        // add(this.postcodeLabel, "1, 9");
-        // add(this.postcode, "3, 9");
-
-        setBorder(Borders.DIALOG);
     }
 
+    private static JLabel newFieldLabel(String label) {
+        JLabel l = new JLabel(label);
+        // l.setBorder(BorderFactory.createEtchedBorder());
+        return l;
+    }
 }
