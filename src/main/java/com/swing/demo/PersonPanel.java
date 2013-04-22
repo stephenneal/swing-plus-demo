@@ -17,6 +17,8 @@ public class PersonPanel extends PlusJPanel<PersonModel> {
 
     private JLabel dateOfBirthLabel;
     private JTextField dateOfBirth;
+    private JLabel dateDeceasedLabel;
+    private JTextField dateDeceased;
     private JLabel idLabel;
     private JTextField id;
     private JLabel surnameLabel;
@@ -32,6 +34,8 @@ public class PersonPanel extends PlusJPanel<PersonModel> {
         // Create all the Swing components
         this.dateOfBirthLabel = newFieldLabel();
         this.dateOfBirth = new JTextField();
+        this.dateDeceasedLabel = newFieldLabel();
+        this.dateDeceased = new JTextField();
         this.idLabel = newFieldLabel();
         this.id = new JTextField();
         this.firstNameLabel = newFieldLabel();
@@ -45,6 +49,10 @@ public class PersonPanel extends PlusJPanel<PersonModel> {
         bind(TextBinding.text(model, Properties.DATE_OF_BIRTH_LABEL, this.dateOfBirthLabel));
         bind(TextBinding.text(model, Properties.DATE_OF_BIRTH, this.dateOfBirth));
         bind(StateBinding.editable(model, Properties.DATE_OF_BIRTH_EDITABLE, this.dateOfBirth));
+
+        bind(TextBinding.text(model, Properties.DATE_DECEASED_LABEL, this.dateDeceasedLabel));
+        bind(TextBinding.text(model, Properties.DATE_DECEASED, this.dateDeceased));
+        bind(StateBinding.editable(model, Properties.DATE_DECEASED_EDITABLE, this.dateDeceased));
 
         bind(TextBinding.text(model, Properties.TITLE, this.idLabel));
         bind(TextBinding.text(model, Properties.ID, this.id));
@@ -64,7 +72,7 @@ public class PersonPanel extends PlusJPanel<PersonModel> {
 
         // Lay out the components.
         DefaultFormBuilder builder = new DefaultFormBuilder(new FormLayout(LayoutFactory2.componentColumnSpec(1, 1),
-                        LayoutFactory2.relatedRowSpec(5)), this);
+                        LayoutFactory2.relatedRowSpec(6)), this);
         builder.append(this.firstNameLabel);
         builder.append(this.firstName);
         builder.nextLine(2);
@@ -76,6 +84,9 @@ public class PersonPanel extends PlusJPanel<PersonModel> {
         builder.nextLine(2);
         builder.append(this.dateOfBirthLabel);
         builder.append(this.dateOfBirth);
+        builder.nextLine(2);
+        builder.append(this.dateDeceasedLabel);
+        builder.append(this.dateDeceased);
         builder.nextLine(2);
         builder.append(this.idLabel);
         builder.append(this.id);

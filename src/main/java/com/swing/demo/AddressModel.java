@@ -1,8 +1,10 @@
 package com.swing.demo;
 
 import java.util.Date;
+import java.util.List;
 
 import org.jdesktop.beansbinding.Property;
+import org.jdesktop.observablecollections.ObservableList;
 
 import com.swing.plus.mvc.DualModePresentationModel;
 import com.swing.plus.mvc.ReadOnlyParticipant;
@@ -19,7 +21,9 @@ public class AddressModel extends DualModePresentationModel {
         public static Property<AddressModel, String> ADDRESS1 = create("address1");
         public static Property<AddressModel, String> ADDRESS2 = create("address2");
         public static Property<AddressModel, String> POSTCODE = create("postcode");
+        public static Property<AddressModel, List<String>> POSTCODES = create("postcodes");
         public static Property<AddressModel, String> STATE = create("state");
+        public static Property<AddressModel, List<String>> STATES = create("states");
         public static Property<AddressModel, String> SUBURB = create("suburb");
 
         public static Property<AddressModel, Date> ADDRESS1_LABEL = create("address1Label");
@@ -38,7 +42,9 @@ public class AddressModel extends DualModePresentationModel {
     private String address1;
     private String address2;
     private String postcode;
+    private ObservableList<String> postcodes;
     private String state;
+    private ObservableList<String> states;
     private String suburb;
 
     private boolean address1Editable;
@@ -96,6 +102,16 @@ public class AddressModel extends DualModePresentationModel {
         getPropertyChangeSupport().firePropertyChange("postcode", oldValue, newValue);
     }
 
+    public ObservableList<String> getPostcodes() {
+        return this.postcodes;
+    }
+
+    public void setPostcodes(ObservableList<String> newValue) {
+        ObservableList<String> oldValue = this.postcodes;
+        this.postcodes = newValue;
+        getPropertyChangeSupport().firePropertyChange("postcodes", oldValue, newValue);
+    }
+
     public String getState() {
         return this.state;
     }
@@ -104,6 +120,16 @@ public class AddressModel extends DualModePresentationModel {
         String oldValue = this.state;
         this.state = newValue;
         getPropertyChangeSupport().firePropertyChange("state", oldValue, newValue);
+    }
+
+    public ObservableList<String> getStates() {
+        return this.states;
+    }
+
+    public void setStates(ObservableList<String> newValue) {
+        ObservableList<String> oldValue = this.states;
+        this.states = newValue;
+        getPropertyChangeSupport().firePropertyChange("states", oldValue, newValue);
     }
 
     public String getSuburb() {

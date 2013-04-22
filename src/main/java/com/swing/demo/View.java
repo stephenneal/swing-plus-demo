@@ -3,12 +3,16 @@ package com.swing.demo;
 import java.awt.BorderLayout;
 import java.awt.event.WindowAdapter;
 import java.awt.event.WindowEvent;
+import java.util.ArrayList;
 import java.util.Calendar;
+import java.util.List;
 
 import javax.swing.BorderFactory;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.SwingUtilities;
+
+import org.jdesktop.observablecollections.ObservableCollections;
 
 import com.jgoodies.forms.builder.DefaultFormBuilder;
 import com.jgoodies.forms.factories.Borders;
@@ -56,10 +60,12 @@ public class View extends JPanel {
 
         AddressModel aModel = new AddressModel();
         aModel.setAddress1("35 Runway Drive");
-        aModel.setAddress2("");
-        aModel.setSuburb("Happyville");
-        aModel.setState("SA");
+        // aModel.setAddress2("Doo Dah");
+        aModel.setPostcodes(ObservableCollections.observableList(getPostcodes()));
         aModel.setPostcode("5000");
+        aModel.setSuburb("Happyville");
+        aModel.setStates(ObservableCollections.observableList(getStates()));
+        aModel.setState("SA");
         aModel.setTitle("Address");
         aModel.setMode(ViewMode.READ_ONLY);
         AddressPanel addressPanel = new AddressPanel(aModel, bindingService);
@@ -79,7 +85,7 @@ public class View extends JPanel {
         JPanel panel = new JPanel();
         panel.setBorder(Borders.DIALOG);
         DefaultFormBuilder builder = new DefaultFormBuilder(new FormLayout(LayoutFactory2.relatedColumnSpec(2, 1, 2),
-                        LayoutFactory2.relatedRowSpec(2)), panel);
+                        LayoutFactory2.relatedRowSpec(2, "top")), panel);
         builder.append(personPanel);
         builder.append(addressPanel);
         builder.nextLine(2);
@@ -89,5 +95,27 @@ public class View extends JPanel {
 
     private static void setDefaultBorder(JPanel panel, String title) {
         panel.setBorder(BorderFactory.createCompoundBorder(BorderFactory.createTitledBorder(title), Borders.DIALOG));
+    }
+
+    private static List<String> getPostcodes() {
+        List<String> postcodes = new ArrayList<String>();
+        postcodes.add("5000");
+        postcodes.add("5001");
+        postcodes.add("5003");
+        postcodes.add("5004");
+        postcodes.add("5005");
+        postcodes.add("5006");
+        return postcodes;
+    }
+
+    private static List<String> getStates() {
+        List<String> states = new ArrayList<String>();
+        states.add("SA");
+        states.add("NSW");
+        states.add("VIC");
+        states.add("QLD");
+        states.add("TAS");
+        states.add("WA");
+        return states;
     }
 }

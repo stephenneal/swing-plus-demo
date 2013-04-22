@@ -67,6 +67,24 @@ public class LayoutFactory2 {
         return defaultSpec(rows, RELATED_GAP_ROW, growRows);
     }
 
+    /**
+     * Creates a row specification for {@link FormLayout} where each row is separated by
+     * {@link FormSpecs#RELATED_GAP_ROWSPEC}. Each row is the value of {@code vAlign} prepended to "default" unless
+     * specified to grow in which case it is "fill:default:grow".
+     * 
+     * @param rows number of rows
+     * @param vAlign vertical alignment for rows (centered if not specified)
+     * @param growRows column indexes to grow
+     * @return
+     */
+    public static String relatedRowSpec(int rows, String vAlign, int... growRows) {
+        if (rows <= 0) {
+            throw new IllegalArgumentException("rows must be > 0");
+        }
+        String dSpec = vAlign == null || vAlign.isEmpty() ? DEFAULT : vAlign + ":" + DEFAULT;
+        return defaultSpec(null, rows, dSpec, RELATED_GAP_ROW, growRows);
+    }
+
     public static FormLayout defaultFormLayout(int columns, int rows) {
         return new FormLayout(relatedColumnSpec(columns), relatedRowSpec(rows));
     }
@@ -95,6 +113,20 @@ public class LayoutFactory2 {
      * @return
      */
     private static String defaultSpec(String customPre, int count, String relatedGap, int... grow) {
+        return defaultSpec(customPre, count, DEFAULT, relatedGap, grow);
+    }
+
+    /**
+     * Creates a specification for {@link FormLayout} where "default" is specified the number of times defined by
+     * {@code count} and each time it is separated by the gap. For indexes defined to grow "fill:default:grow" is used
+     * in place of "default".
+     * 
+     * @param customPre a custom specification to put before each default specification (with gap in between)
+     * @param count number of default columns/rows
+     * @param grow indexes to grow, NB. to match {@link FormLayout} index starts at 1 (not 0 like most other Java stuff)
+     * @return
+     */
+    private static String defaultSpec(String customPre, int count, String defaultSpec, String relatedGap, int... grow) {
         if (count <= 0) {
             throw new IllegalArgumentException("count must be > 0");
         }
@@ -116,7 +148,7 @@ public class LayoutFactory2 {
                     }
                 }
             }
-            spec.append(grows ? FILL_DEFAULT_GROW : DEFAULT);
+            spec.append(grows ? FILL_DEFAULT_GROW : defaultSpec);
         }
         LOGGER.debug(spec.toString());
         return spec.toString();

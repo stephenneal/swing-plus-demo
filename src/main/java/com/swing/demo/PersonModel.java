@@ -17,18 +17,21 @@ public class PersonModel extends DualModePresentationModel {
      */
     public static class Properties extends DualModePresentationModel.Properties {
         public static Property<PersonModel, Date> DATE_OF_BIRTH = create("dateOfBirth");
+        public static Property<PersonModel, Date> DATE_DECEASED = create("dateDeceased");
         public static Property<PersonModel, String> FIRST_NAME = create("firstName");
         public static Property<PersonModel, String> ID = create("id");
         public static Property<PersonModel, String> OTHER_NAMES = create("otherNames");
         public static Property<PersonModel, String> SURNAME = create("surname");
 
         public static Property<PersonModel, Date> DATE_OF_BIRTH_LABEL = create("dateOfBirthLabel");
+        public static Property<PersonModel, Date> DATE_DECEASED_LABEL = create("dateDeceasedLabel");
         public static Property<PersonModel, String> FIRST_NAME_LABEL = create("firstNameLabel");
         public static Property<PersonModel, String> ID_LABEL = create("idLabel");
         public static Property<PersonModel, String> OTHER_NAMES_LABEL = create("otherNamesLabel");
         public static Property<PersonModel, String> SURNAME_LABEL = create("surnameLabel");
 
         public static Property<PersonModel, Boolean> DATE_OF_BIRTH_EDITABLE = create("dateOfBirthEditable");
+        public static Property<PersonModel, Boolean> DATE_DECEASED_EDITABLE = create("dateDeceasedEditable");
         public static Property<PersonModel, Boolean> FIRST_NAME_EDITABLE = create("firstNameEditable");
         public static Property<PersonModel, Boolean> ID_EDITABLE = create("idEditable");
         public static Property<PersonModel, Boolean> OTHER_NAMES_EDITABLE = create("otherNamesEditable");
@@ -36,18 +39,21 @@ public class PersonModel extends DualModePresentationModel {
     }
 
     private Date dateOfBirth;
+    private Date dateDeceased;
     private String firstName;
     private String id;
     private String otherNames;
     private String surname;
 
     private boolean dateOfBirthEditable;
+    private boolean dateDeceasedEditable;
     private boolean firstNameEditable;
     private boolean idEditable;
     private boolean otherNamesEditable;
     private boolean surnameEditable;
 
     private String dateOfBirthLabel;
+    private String dateDeceasedLabel;
     private String firstNameLabel;
     private String idLabel;
     private String otherNamesLabel;
@@ -57,6 +63,7 @@ public class PersonModel extends DualModePresentationModel {
         super();
         // Set defaults for label values
         this.dateOfBirthLabel = "Date of Birth";
+        this.dateDeceasedLabel = "Date Deceased";
         this.firstNameLabel = "First name";
         this.idLabel = "Id";
         this.otherNamesLabel = "Other name(s)";
@@ -74,6 +81,16 @@ public class PersonModel extends DualModePresentationModel {
         Date oldValue = this.dateOfBirth;
         this.dateOfBirth = newValue;
         getPropertyChangeSupport().firePropertyChange("dateOfBirth", oldValue, newValue);
+    }
+
+    public Date getDateDeceased() {
+        return this.dateDeceased;
+    }
+
+    public void setDateDeceased(Date newValue) {
+        Date oldValue = this.dateDeceased;
+        this.dateDeceased = newValue;
+        getPropertyChangeSupport().firePropertyChange("dateDeceased", oldValue, newValue);
     }
 
     public String getFirstName() {
@@ -130,6 +147,17 @@ public class PersonModel extends DualModePresentationModel {
         getPropertyChangeSupport().firePropertyChange("dateOfBirthEditable", oldValue, newValue);
     }
 
+    public boolean getDateDeceasedEditable() {
+        return this.dateDeceasedEditable;
+    }
+
+    @ReadOnlyParticipant
+    public void setDateDeceasedEditable(boolean newValue) {
+        boolean oldValue = this.dateDeceasedEditable;
+        this.dateDeceasedEditable = newValue;
+        getPropertyChangeSupport().firePropertyChange("dateDeceasedEditable", oldValue, newValue);
+    }
+
     public boolean getFirstNameEditable() {
         return this.firstNameEditable;
     }
@@ -182,6 +210,16 @@ public class PersonModel extends DualModePresentationModel {
         String oldValue = this.dateOfBirthLabel;
         this.dateOfBirthLabel = newValue;
         getPropertyChangeSupport().firePropertyChange("dateOfBirthLabel", oldValue, newValue);
+    }
+
+    public String getDateDeceasedLabel() {
+        return this.dateDeceasedLabel;
+    }
+
+    public void setDateDeceasedLabel(String newValue) {
+        String oldValue = this.dateDeceasedLabel;
+        this.dateDeceasedLabel = newValue;
+        getPropertyChangeSupport().firePropertyChange("dateDeceasedLabel", oldValue, newValue);
     }
 
     public String getIdLabel() {
