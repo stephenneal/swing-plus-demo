@@ -8,6 +8,7 @@ import com.jgoodies.forms.layout.FormLayout;
 import com.swing.binding.bbb.BindingService;
 import com.swing.binding.bbb.StateBinding;
 import com.swing.binding.bbb.TextBinding;
+import com.swing.demo.AddressModel.Properties;
 import com.swing.demo.layout.LayoutFactory2;
 import com.swing.plus.mvc.PlusJPanel;
 
@@ -41,21 +42,25 @@ public class AddressPanel extends PlusJPanel<AddressModel> {
         this.suburb = new JTextField();
 
         // Bind the Swing components to the model
-        bind(TextBinding.text(model, "address1", this.address1));
-        bind(TextBinding.text(model, "address1Label", this.address1Label));
-        bind(StateBinding.editable(model, "address1Editable", this.address1));
-        bind(TextBinding.text(model, "address2", this.address2));
-        bind(TextBinding.text(model, "address2Label", this.address2Label));
-        bind(StateBinding.editable(model, "address2Editable", this.address2));
-        bind(TextBinding.text(model, "postcode", this.postcode));
-        bind(TextBinding.text(model, "postcodeLabel", this.postcodeLabel));
-        bind(StateBinding.editable(model, "postcodeEditable", this.postcode));
-        bind(TextBinding.text(model, "state", this.state));
-        bind(TextBinding.text(model, "stateLabel", this.stateLabel));
-        bind(StateBinding.editable(model, "stateEditable", this.state));
-        bind(TextBinding.text(model, "suburb", this.suburb));
-        bind(TextBinding.text(model, "suburbLabel", this.suburbLabel));
-        bind(StateBinding.editable(model, "suburbEditable", this.suburb));
+        bind(TextBinding.text(model, Properties.ADDRESS1_LABEL, this.address1Label));
+        bind(TextBinding.text(model, Properties.ADDRESS1, this.address1));
+        bind(StateBinding.editable(model, Properties.ADDRESS1_EDITABLE, this.address1));
+
+        bind(TextBinding.text(model, Properties.ADDRESS2_LABEL, this.address2Label));
+        bind(TextBinding.text(model, Properties.ADDRESS2, this.address2));
+        bind(StateBinding.editable(model, Properties.ADDRESS2_EDITABLE, this.address2));
+
+        bind(TextBinding.text(model, Properties.POSTCODE_LABEL, this.postcodeLabel));
+        bind(TextBinding.text(model, Properties.POSTCODE, this.postcode));
+        bind(StateBinding.editable(model, Properties.POSTCODE_EDITABLE, this.postcode));
+
+        bind(TextBinding.text(model, Properties.SUBURB_LABEL, this.suburbLabel));
+        bind(TextBinding.text(model, Properties.SUBURB, this.suburb));
+        bind(StateBinding.editable(model, Properties.SUBURB_EDITABLE, this.suburb));
+
+        bind(TextBinding.text(model, Properties.STATE_LABEL, this.stateLabel));
+        bind(TextBinding.text(model, Properties.STATE, this.state));
+        bind(StateBinding.editable(model, Properties.STATE_EDITABLE, this.state));
 
         // Lay out the components.
         DefaultFormBuilder builder = new DefaultFormBuilder(new FormLayout(LayoutFactory2.componentColumnSpec(2, 1, 2),

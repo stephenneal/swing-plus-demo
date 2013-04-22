@@ -8,6 +8,7 @@ import com.jgoodies.forms.layout.FormLayout;
 import com.swing.binding.bbb.BindingService;
 import com.swing.binding.bbb.StateBinding;
 import com.swing.binding.bbb.TextBinding;
+import com.swing.demo.PersonModel.Properties;
 import com.swing.demo.layout.LayoutFactory2;
 import com.swing.plus.mvc.PlusJPanel;
 
@@ -41,21 +42,25 @@ public class PersonPanel extends PlusJPanel<PersonModel> {
         this.surname = new JTextField();
 
         // Bind the Swing components to the model
-        bind(TextBinding.text(model, "dateOfBirth", this.dateOfBirth));
-        bind(TextBinding.text(model, "dateOfBirthLabel", this.dateOfBirthLabel));
-        bind(StateBinding.editable(model, "dateOfBirthEditable", this.dateOfBirth));
-        bind(TextBinding.text(model, "id", this.id));
-        bind(TextBinding.text(model, "idLabel", this.idLabel));
-        bind(StateBinding.editable(model, "idEditable", this.id));
-        bind(TextBinding.text(model, "firstName", this.firstName));
-        bind(TextBinding.text(model, "firstNameLabel", this.firstNameLabel));
-        bind(StateBinding.editable(model, "firstNameEditable", this.firstName));
-        bind(TextBinding.text(model, "otherNames", this.otherNames));
-        bind(TextBinding.text(model, "otherNamesLabel", this.otherNamesLabel));
-        bind(StateBinding.editable(model, "otherNamesEditable", this.otherNames));
-        bind(TextBinding.text(model, "surname", this.surname));
-        bind(TextBinding.text(model, "surnameLabel", this.surnameLabel));
-        bind(StateBinding.editable(model, "surnameEditable", this.surname));
+        bind(TextBinding.text(model, Properties.DATE_OF_BIRTH_LABEL, this.dateOfBirthLabel));
+        bind(TextBinding.text(model, Properties.DATE_OF_BIRTH, this.dateOfBirth));
+        bind(StateBinding.editable(model, Properties.DATE_OF_BIRTH_EDITABLE, this.dateOfBirth));
+
+        bind(TextBinding.text(model, Properties.TITLE, this.idLabel));
+        bind(TextBinding.text(model, Properties.ID, this.id));
+        bind(StateBinding.editable(model, Properties.ID_EDITABLE, this.id));
+
+        bind(TextBinding.text(model, Properties.FIRST_NAME_LABEL, this.firstNameLabel));
+        bind(TextBinding.text(model, Properties.FIRST_NAME, this.firstName));
+        bind(StateBinding.editable(model, Properties.FIRST_NAME_EDITABLE, this.firstName));
+
+        bind(TextBinding.text(model, Properties.OTHER_NAMES_LABEL, this.otherNamesLabel));
+        bind(TextBinding.text(model, Properties.OTHER_NAMES, this.otherNames));
+        bind(StateBinding.editable(model, Properties.OTHER_NAMES_EDITABLE, this.otherNames));
+
+        bind(TextBinding.text(model, Properties.SURNAME_LABEL, this.surnameLabel));
+        bind(TextBinding.text(model, Properties.SURNAME, this.surname));
+        bind(StateBinding.editable(model, Properties.SURNAME_EDITABLE, this.surname));
 
         // Lay out the components.
         DefaultFormBuilder builder = new DefaultFormBuilder(new FormLayout(LayoutFactory2.componentColumnSpec(1, 1),

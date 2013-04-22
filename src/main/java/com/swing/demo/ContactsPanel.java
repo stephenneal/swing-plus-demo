@@ -8,6 +8,7 @@ import com.jgoodies.forms.layout.FormLayout;
 import com.swing.binding.bbb.BindingService;
 import com.swing.binding.bbb.StateBinding;
 import com.swing.binding.bbb.TextBinding;
+import com.swing.demo.ContactsModel.Properties;
 import com.swing.demo.layout.LayoutFactory2;
 import com.swing.plus.mvc.PlusJPanel;
 
@@ -41,21 +42,25 @@ public class ContactsPanel extends PlusJPanel<ContactsModel> {
         this.phoneMobile = new JTextField();
 
         // Bind the Swing components to the model
-        bind(TextBinding.text(model, "email", this.email));
-        bind(TextBinding.text(model, "emailLabel", this.emailLabel));
-        bind(StateBinding.editable(model, "emailEditable", this.email));
-        bind(TextBinding.text(model, "fax", this.fax));
-        bind(TextBinding.text(model, "faxLabel", this.faxLabel));
-        bind(StateBinding.editable(model, "faxEditable", this.fax));
-        bind(TextBinding.text(model, "phoneHome", this.phoneHome));
-        bind(TextBinding.text(model, "phoneHomeLabel", this.phoneHomeLabel));
-        bind(StateBinding.editable(model, "phoneHomeEditable", this.phoneHome));
-        bind(TextBinding.text(model, "phoneWork", this.phoneWork));
-        bind(TextBinding.text(model, "phoneWorkLabel", this.phoneWorkLabel));
-        bind(StateBinding.editable(model, "phoneWorkEditable", this.phoneWork));
-        bind(TextBinding.text(model, "phoneMobile", this.phoneMobile));
-        bind(TextBinding.text(model, "phoneMobileLabel", this.phoneMobileLabel));
-        bind(StateBinding.editable(model, "phoneMobileEditable", this.phoneMobile));
+        bind(TextBinding.text(model, Properties.EMAIL_LABEL, this.emailLabel));
+        bind(TextBinding.text(model, Properties.EMAIL, this.email));
+        bind(StateBinding.editable(model, Properties.EMAIL_EDITABLE, this.email));
+
+        bind(TextBinding.text(model, Properties.FAX_LABEL, this.faxLabel));
+        bind(TextBinding.text(model, Properties.FAX, this.fax));
+        bind(StateBinding.editable(model, Properties.FAX_EDITABLE, this.fax));
+
+        bind(TextBinding.text(model, Properties.PHONE_HOME_LABEL, this.phoneHomeLabel));
+        bind(TextBinding.text(model, Properties.PHONE_HOME, this.phoneHome));
+        bind(StateBinding.editable(model, Properties.PHONE_HOME_EDITABLE, this.phoneHome));
+
+        bind(TextBinding.text(model, Properties.PHONE_MOBILE_LABEL, this.phoneMobileLabel));
+        bind(TextBinding.text(model, Properties.PHONE_MOBILE, this.phoneMobile));
+        bind(StateBinding.editable(model, Properties.PHONE_MOBILE_EDITABLE, this.phoneMobile));
+
+        bind(TextBinding.text(model, Properties.PHONE_WORK_LABEL, this.phoneWorkLabel));
+        bind(TextBinding.text(model, Properties.PHONE_WORK, this.phoneWork));
+        bind(StateBinding.editable(model, Properties.PHONE_WORK_EDITABLE, this.phoneWork));
 
         // Lay out the components.
         DefaultFormBuilder builder = new DefaultFormBuilder(new FormLayout(LayoutFactory2.componentColumnSpec(1, 1),

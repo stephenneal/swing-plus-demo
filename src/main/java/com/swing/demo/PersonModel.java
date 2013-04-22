@@ -2,6 +2,8 @@ package com.swing.demo;
 
 import java.util.Date;
 
+import org.jdesktop.beansbinding.Property;
+
 import com.swing.plus.mvc.DualModePresentationModel;
 import com.swing.plus.mvc.ReadOnlyParticipant;
 
@@ -10,20 +12,44 @@ import com.swing.plus.mvc.ReadOnlyParticipant;
  */
 public class PersonModel extends DualModePresentationModel {
 
+    /**
+     * Defines properties that can be bound on this model.
+     */
+    public static class Properties extends DualModePresentationModel.Properties {
+        public static Property<PersonModel, Date> DATE_OF_BIRTH = create("dateOfBirth");
+        public static Property<PersonModel, String> FIRST_NAME = create("firstName");
+        public static Property<PersonModel, String> ID = create("id");
+        public static Property<PersonModel, String> OTHER_NAMES = create("otherNames");
+        public static Property<PersonModel, String> SURNAME = create("surname");
+
+        public static Property<PersonModel, Date> DATE_OF_BIRTH_LABEL = create("dateOfBirthLabel");
+        public static Property<PersonModel, String> FIRST_NAME_LABEL = create("firstNameLabel");
+        public static Property<PersonModel, String> ID_LABEL = create("idLabel");
+        public static Property<PersonModel, String> OTHER_NAMES_LABEL = create("otherNamesLabel");
+        public static Property<PersonModel, String> SURNAME_LABEL = create("surnameLabel");
+
+        public static Property<PersonModel, Boolean> DATE_OF_BIRTH_EDITABLE = create("dateOfBirthEditable");
+        public static Property<PersonModel, Boolean> FIRST_NAME_EDITABLE = create("firstNameEditable");
+        public static Property<PersonModel, Boolean> ID_EDITABLE = create("idEditable");
+        public static Property<PersonModel, Boolean> OTHER_NAMES_EDITABLE = create("otherNamesEditable");
+        public static Property<PersonModel, Boolean> SURNAME_EDITABLE = create("surnameEditable");
+    }
+
     private Date dateOfBirth;
-    private String id;
     private String firstName;
+    private String id;
     private String otherNames;
     private String surname;
 
     private boolean dateOfBirthEditable;
-    private boolean idEditable;
     private boolean firstNameEditable;
+    private boolean idEditable;
     private boolean otherNamesEditable;
     private boolean surnameEditable;
+
     private String dateOfBirthLabel;
-    private String idLabel;
     private String firstNameLabel;
+    private String idLabel;
     private String otherNamesLabel;
     private String surnameLabel;
 
@@ -31,34 +57,14 @@ public class PersonModel extends DualModePresentationModel {
         super();
         // Set defaults for label values
         this.dateOfBirthLabel = "Date of Birth";
-        this.idLabel = "Id";
         this.firstNameLabel = "First name";
+        this.idLabel = "Id";
         this.otherNamesLabel = "Other name(s)";
         this.surnameLabel = "Surname";
     }
 
     // Data properties
     // -----------------------------------------------------------------------------------------------------------------
-
-    public String getFirstName() {
-        return this.firstName;
-    }
-
-    public void setFirstName(String newValue) {
-        String oldValue = this.firstName;
-        this.firstName = newValue;
-        getPropertyChangeSupport().firePropertyChange("firstName", oldValue, newValue);
-    }
-
-    public String getOtherNames() {
-        return this.otherNames;
-    }
-
-    public void setOtherNames(String newValue) {
-        String oldValue = this.otherNames;
-        this.otherNames = newValue;
-        getPropertyChangeSupport().firePropertyChange("otherNames", oldValue, newValue);
-    }
 
     public Date getDateOfBirth() {
         return this.dateOfBirth;
@@ -70,6 +76,16 @@ public class PersonModel extends DualModePresentationModel {
         getPropertyChangeSupport().firePropertyChange("dateOfBirth", oldValue, newValue);
     }
 
+    public String getFirstName() {
+        return this.firstName;
+    }
+
+    public void setFirstName(String newValue) {
+        String oldValue = this.firstName;
+        this.firstName = newValue;
+        getPropertyChangeSupport().firePropertyChange("firstName", oldValue, newValue);
+    }
+
     public String getId() {
         return this.id;
     }
@@ -78,6 +94,16 @@ public class PersonModel extends DualModePresentationModel {
         String oldValue = this.id;
         this.id = newValue;
         getPropertyChangeSupport().firePropertyChange("id", oldValue, newValue);
+    }
+
+    public String getOtherNames() {
+        return this.otherNames;
+    }
+
+    public void setOtherNames(String newValue) {
+        String oldValue = this.otherNames;
+        this.otherNames = newValue;
+        getPropertyChangeSupport().firePropertyChange("otherNames", oldValue, newValue);
     }
 
     public String getSurname() {
@@ -104,17 +130,6 @@ public class PersonModel extends DualModePresentationModel {
         getPropertyChangeSupport().firePropertyChange("dateOfBirthEditable", oldValue, newValue);
     }
 
-    public boolean getIdEditable() {
-        return this.idEditable;
-    }
-
-    @ReadOnlyParticipant
-    public void setIdEditable(boolean newValue) {
-        boolean oldValue = this.idEditable;
-        this.idEditable = newValue;
-        getPropertyChangeSupport().firePropertyChange("idEditable", oldValue, newValue);
-    }
-
     public boolean getFirstNameEditable() {
         return this.firstNameEditable;
     }
@@ -124,6 +139,17 @@ public class PersonModel extends DualModePresentationModel {
         boolean oldValue = this.firstNameEditable;
         this.firstNameEditable = newValue;
         getPropertyChangeSupport().firePropertyChange("firstNameEditable", oldValue, newValue);
+    }
+
+    public boolean getIdEditable() {
+        return this.idEditable;
+    }
+
+    @ReadOnlyParticipant
+    public void setIdEditable(boolean newValue) {
+        boolean oldValue = this.idEditable;
+        this.idEditable = newValue;
+        getPropertyChangeSupport().firePropertyChange("idEditable", oldValue, newValue);
     }
 
     public boolean getOtherNamesEditable() {

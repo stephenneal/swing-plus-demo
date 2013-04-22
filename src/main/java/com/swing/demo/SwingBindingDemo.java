@@ -6,6 +6,7 @@ import java.awt.event.WindowEvent;
 import java.text.DateFormat;
 import java.util.Calendar;
 import java.util.Date;
+import java.util.List;
 
 import javax.swing.BorderFactory;
 import javax.swing.BoxLayout;
@@ -16,11 +17,13 @@ import javax.swing.JTextField;
 import javax.swing.SwingUtilities;
 
 import org.jdesktop.beansbinding.Binding;
+import org.jdesktop.beansbinding.Property;
 import org.jdesktop.observablecollections.ObservableList;
 
 import com.swing.binding.bbb.BindingService;
 import com.swing.binding.bbb.TextBinding;
 import com.swing.binding.bbb.mvc.PresentationModel;
+import com.swing.demo.SwingBindingDemo.BindingPrototypeModel.Properties;
 import com.swing.plus.PanelFactory;
 
 @SuppressWarnings("serial")
@@ -49,7 +52,7 @@ public class SwingBindingDemo extends JPanel {
     }
 
     private static SwingBindingDemo createPrototype(BindingService bindingService) {
-        BindingPrototypeModel model = BindingPrototypeModel.newInstance();
+        BindingPrototypeModel model = new BindingPrototypeModel();
         model.setField1Label("String");
         model.setField2Label("Double");
         model.setField3Label("Date");
@@ -110,24 +113,24 @@ public class SwingBindingDemo extends JPanel {
         this.field4Output.setBorder(BorderFactory.createEtchedBorder());
 
         // Bind the Swing components to the model
-        bind(TextBinding.text(model, "field1Label", this.field1Label));
-        bind(TextBinding.text(model, "field2Label", this.field2Label));
-        bind(TextBinding.text(model, "field3Label", this.field3Label));
-        bind(TextBinding.text(model, "field4Label", this.field4Label));
-        bind(TextBinding.text(model, "field1Label", this.field1OutputLabel));
-        bind(TextBinding.text(model, "field2Label", this.field2OutputLabel));
-        bind(TextBinding.text(model, "field3Label", this.field3OutputLabel));
-        bind(TextBinding.text(model, "field4Label", this.field4OutputLabel));
+        bind(TextBinding.text(model, Properties.FIELD1_LABEL, this.field1Label));
+        bind(TextBinding.text(model, Properties.FIELD2_LABEL, this.field2Label));
+        bind(TextBinding.text(model, Properties.FIELD3_LABEL, this.field3Label));
+        bind(TextBinding.text(model, Properties.FIELD3_LABEL, this.field4Label));
+        bind(TextBinding.text(model, Properties.FIELD1_LABEL, this.field1OutputLabel));
+        bind(TextBinding.text(model, Properties.FIELD2_LABEL, this.field2OutputLabel));
+        bind(TextBinding.text(model, Properties.FIELD3_LABEL, this.field3OutputLabel));
+        bind(TextBinding.text(model, Properties.FIELD3_LABEL, this.field4OutputLabel));
 
-        bind(TextBinding.text(model, "string", this.field1));
-        bind(TextBinding.text(model, "duble", this.field2));
-        bind(TextBinding.text(model, "date", this.field3));
-        bind(TextBinding.text(model, "dateTime", this.field4, DateFormat.getDateTimeInstance()));
+        bind(TextBinding.text(model, Properties.STRING, this.field1));
+        bind(TextBinding.text(model, Properties.DOUBLE, this.field2));
+        bind(TextBinding.text(model, Properties.DATE, this.field3));
+        bind(TextBinding.text(model, Properties.DATE_TIME, this.field4, DateFormat.getDateTimeInstance()));
 
-        bind(TextBinding.text(model, "string", this.field1Output));
-        bind(TextBinding.text(model, "duble", this.field2Output));
-        bind(TextBinding.text(model, "date", this.field3Output));
-        bind(TextBinding.text(model, "dateTime", this.field4Output, DateFormat.getDateTimeInstance()));
+        bind(TextBinding.text(model, Properties.STRING, this.field1Output));
+        bind(TextBinding.text(model, Properties.DOUBLE, this.field2Output));
+        bind(TextBinding.text(model, Properties.DATE, this.field3Output));
+        bind(TextBinding.text(model, Properties.DATE_TIME, this.field4Output, DateFormat.getDateTimeInstance()));
 
         // Lay the components. For simplicity this just uses box layout, its not pretty. Better Swing layouts
         // include MigLayout and JGoodies FormLayout but that is outside the scope of this prototype.
@@ -160,10 +163,22 @@ public class SwingBindingDemo extends JPanel {
      */
     public static class BindingPrototypeModel extends PresentationModel {
 
-        public static BindingPrototypeModel newInstance() {
-            BindingPrototypeModel bean = new BindingPrototypeModel();
-            // bean.setPropertyChangeSupport(new PropertyChangeSupport2(bean));
-            return bean;
+        /**
+         * Defines properties that can be bound on this model.
+         */
+        public static class Properties extends PresentationModel.Properties {
+            public static Property<BindingPrototypeModel, Date> DATE = create("date");
+            public static Property<BindingPrototypeModel, Date> DATE_TIME = create("dateTime");
+            public static Property<BindingPrototypeModel, Double> DOUBLE = create("duble");
+            public static Property<BindingPrototypeModel, String> STRING = create("string");
+            public static Property<BindingPrototypeModel, List<String>> STRING_LIST = create("stringList");
+            public static Property<BindingPrototypeModel, List<BindingPrototypeModel>> TEST_BEANS = create("testBeans");
+            public static Property<BindingPrototypeModel, List<BindingPrototypeModel>> TEST_BEANS_SELECTED = create("testBeansSelected");
+
+            public static Property<BindingPrototypeModel, String> FIELD1_LABEL = create("field1Label");
+            public static Property<BindingPrototypeModel, String> FIELD2_LABEL = create("field2Label");
+            public static Property<BindingPrototypeModel, String> FIELD3_LABEL = create("field3Label");
+            public static Property<BindingPrototypeModel, String> FIELD4_NAMES_LABEL = create("field4Label");
         }
 
         private String field1Label;
