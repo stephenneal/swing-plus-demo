@@ -51,7 +51,7 @@ public class PersonDetailsModel extends DualModePresentationModel {
         super();
         // Set defaults for label values
         this.heightLabel = "Height (cm)";
-        this.genderLabel = "Gender";
+        this.genderLabel = "Genders";
         this.eyeColourLabel = "Eye Colour";
     }
 

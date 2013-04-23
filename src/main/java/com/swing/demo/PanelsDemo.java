@@ -4,6 +4,7 @@ import java.awt.BorderLayout;
 import java.awt.event.WindowAdapter;
 import java.awt.event.WindowEvent;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.Calendar;
 import java.util.List;
 import java.util.concurrent.Executors;
@@ -23,6 +24,10 @@ import com.jgoodies.forms.builder.DefaultFormBuilder;
 import com.jgoodies.forms.factories.Borders;
 import com.jgoodies.forms.layout.FormLayout;
 import com.swing.binding.bbb.BindingService;
+import com.swing.demo.data.EnumConverter;
+import com.swing.demo.data.EyeColours;
+import com.swing.demo.data.Genders;
+import com.swing.demo.data.States;
 import com.swing.demo.layout.LayoutFactory2;
 import com.swing.demo.panels.AddressModel;
 import com.swing.demo.panels.AddressPanel;
@@ -192,36 +197,19 @@ public class PanelsDemo extends JPanel {
     }
 
     private static List<String> getStates() {
-        List<String> states = new ArrayList<String>();
-        states.add("SA");
-        states.add("NSW");
-        states.add("QLD");
-        states.add("TAS");
-        states.add("VIC");
-        states.add("WA");
-        return states;
+        return Arrays.asList(EnumConverter.nameToString(States.values()));
     }
 
     private static List<String> getStates2() {
-        List<String> states = new ArrayList<String>();
-        states.add("QLD");
-        states.add("VIC");
-        return states;
+        return Arrays.asList(EnumConverter.nameToString(States.QLD, States.VIC));
     }
 
     private static List<String> getEyeColours() {
-        List<String> l = new ArrayList<String>();
-        l.add("Blue");
-        l.add("Brown");
-        l.add("Green");
-        return l;
+        return Arrays.asList(EnumConverter.wordsTitleCase(EyeColours.values()));
     }
 
     private static List<String> getGenders() {
-        List<String> l = new ArrayList<String>();
-        l.add("Male");
-        l.add("Female");
-        return l;
+        return Arrays.asList(EnumConverter.wordsTitleCase(Genders.values()));
     }
 
 }
