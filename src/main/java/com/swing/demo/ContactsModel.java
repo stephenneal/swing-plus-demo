@@ -63,9 +63,6 @@ public class ContactsModel extends DualModePresentationModel {
         this.phoneMobileLabel = "Phone (Mobile)";
     }
 
-    // Data properties
-    // -----------------------------------------------------------------------------------------------------------------
-
     public String getEmail() {
         return this.email;
     }
@@ -76,49 +73,6 @@ public class ContactsModel extends DualModePresentationModel {
         getPropertyChangeSupport().firePropertyChange("email", oldValue, newValue);
     }
 
-    public String getFax() {
-        return this.fax;
-    }
-
-    public void setFax(String newValue) {
-        String oldValue = this.fax;
-        this.fax = newValue;
-        getPropertyChangeSupport().firePropertyChange("fax", oldValue, newValue);
-    }
-
-    public String getPhoneHome() {
-        return this.phoneHome;
-    }
-
-    public void setPhoneHome(String newValue) {
-        String oldValue = this.phoneHome;
-        this.phoneHome = newValue;
-        getPropertyChangeSupport().firePropertyChange("phoneHome", oldValue, newValue);
-    }
-
-    public String getPhoneMobile() {
-        return this.phoneMobile;
-    }
-
-    public void setPhoneMobile(String newValue) {
-        String oldValue = this.phoneMobile;
-        this.phoneMobile = newValue;
-        getPropertyChangeSupport().firePropertyChange("phoneMobile", oldValue, newValue);
-    }
-
-    public String getPhoneWork() {
-        return this.phoneWork;
-    }
-
-    public void setPhoneWork(String newValue) {
-        String oldValue = this.phoneWork;
-        this.phoneWork = newValue;
-        getPropertyChangeSupport().firePropertyChange("phoneWork", oldValue, newValue);
-    }
-
-    // State properties
-    // -----------------------------------------------------------------------------------------------------------------
-
     public boolean getEmailEditable() {
         return this.emailEditable;
     }
@@ -128,6 +82,26 @@ public class ContactsModel extends DualModePresentationModel {
         boolean oldValue = this.emailEditable;
         this.emailEditable = newValue;
         getPropertyChangeSupport().firePropertyChange("emailEditable", oldValue, newValue);
+    }
+
+    public String getEmailLabel() {
+        return this.emailLabel;
+    }
+
+    public void setEmailLabel(String newValue) {
+        String oldValue = this.emailLabel;
+        this.emailLabel = newValue;
+        getPropertyChangeSupport().firePropertyChange("emailLabel", oldValue, newValue);
+    }
+
+    public String getFax() {
+        return this.fax;
+    }
+
+    public void setFax(String newValue) {
+        String oldValue = this.fax;
+        this.fax = newValue;
+        getPropertyChangeSupport().firePropertyChange("fax", oldValue, newValue);
     }
 
     public boolean getFaxEditable() {
@@ -141,6 +115,26 @@ public class ContactsModel extends DualModePresentationModel {
         getPropertyChangeSupport().firePropertyChange("faxEditable", oldValue, newValue);
     }
 
+    public String getFaxLabel() {
+        return this.faxLabel;
+    }
+
+    public void setFaxLabel(String newValue) {
+        String oldValue = this.faxLabel;
+        this.faxLabel = newValue;
+        getPropertyChangeSupport().firePropertyChange("faxLabel", oldValue, newValue);
+    }
+
+    public String getPhoneHome() {
+        return this.phoneHome;
+    }
+
+    public void setPhoneHome(String newValue) {
+        String oldValue = this.phoneHome;
+        this.phoneHome = newValue;
+        getPropertyChangeSupport().firePropertyChange("phoneHome", oldValue, newValue);
+    }
+
     public boolean getPhoneHomeEditable() {
         return this.phoneHomeEditable;
     }
@@ -150,6 +144,26 @@ public class ContactsModel extends DualModePresentationModel {
         boolean oldValue = this.phoneHomeEditable;
         this.phoneHomeEditable = newValue;
         getPropertyChangeSupport().firePropertyChange("phoneHomeEditable", oldValue, newValue);
+    }
+
+    public String getPhoneHomeLabel() {
+        return this.phoneHomeLabel;
+    }
+
+    public void setPhoneHomeLabel(String newValue) {
+        String oldValue = this.phoneHomeLabel;
+        this.phoneHomeLabel = newValue;
+        getPropertyChangeSupport().firePropertyChange("phoneHomeLabel", oldValue, newValue);
+    }
+
+    public String getPhoneMobile() {
+        return this.phoneMobile;
+    }
+
+    public void setPhoneMobile(String newValue) {
+        String oldValue = this.phoneMobile;
+        this.phoneMobile = newValue;
+        getPropertyChangeSupport().firePropertyChange("phoneMobile", oldValue, newValue);
     }
 
     public boolean getPhoneMobileEditable() {
@@ -163,6 +177,26 @@ public class ContactsModel extends DualModePresentationModel {
         getPropertyChangeSupport().firePropertyChange("phoneMobileEditable", oldValue, newValue);
     }
 
+    public String getPhoneMobileLabel() {
+        return this.phoneMobileLabel;
+    }
+
+    public void setPhoneMobileLabel(String newValue) {
+        String oldValue = this.phoneMobileLabel;
+        this.phoneMobileLabel = newValue;
+        getPropertyChangeSupport().firePropertyChange("phoneMobileLabel", oldValue, newValue);
+    }
+
+    public String getPhoneWork() {
+        return this.phoneWork;
+    }
+
+    public void setPhoneWork(String newValue) {
+        String oldValue = this.phoneWork;
+        this.phoneWork = newValue;
+        getPropertyChangeSupport().firePropertyChange("phoneWork", oldValue, newValue);
+    }
+
     public boolean getPhoneWorkEditable() {
         return this.phoneWorkEditable;
     }
@@ -172,46 +206,6 @@ public class ContactsModel extends DualModePresentationModel {
         boolean oldValue = this.phoneWorkEditable;
         this.phoneWorkEditable = newValue;
         getPropertyChangeSupport().firePropertyChange("phoneWorkEditable", oldValue, newValue);
-    }
-
-    public String getEmailLabel() {
-        return this.emailLabel;
-    }
-
-    public void setEmailLabel(String newValue) {
-        String oldValue = this.emailLabel;
-        this.emailLabel = newValue;
-        getPropertyChangeSupport().firePropertyChange("emailLabel", oldValue, newValue);
-    }
-
-    public String getFaxLabel() {
-        return this.faxLabel;
-    }
-
-    public void setFaxLabel(String newValue) {
-        String oldValue = this.faxLabel;
-        this.faxLabel = newValue;
-        getPropertyChangeSupport().firePropertyChange("faxLabel", oldValue, newValue);
-    }
-
-    public String getPhoneHomeLabel() {
-        return this.phoneHomeLabel;
-    }
-
-    public void setPhoneHomeLabel(String newValue) {
-        String oldValue = this.phoneHomeLabel;
-        this.phoneHomeLabel = newValue;
-        getPropertyChangeSupport().firePropertyChange("phoneHomeLabel", oldValue, newValue);
-    }
-
-    public String getPhoneMobileLabel() {
-        return this.phoneMobileLabel;
-    }
-
-    public void setPhoneMobileLabel(String newValue) {
-        String oldValue = this.phoneMobileLabel;
-        this.phoneMobileLabel = newValue;
-        getPropertyChangeSupport().firePropertyChange("phoneMobileLabel", oldValue, newValue);
     }
 
     public String getPhoneWorkLabel() {

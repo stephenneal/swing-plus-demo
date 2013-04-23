@@ -60,23 +60,43 @@ public class View extends JPanel {
         pModel.setSurname("Giles");
         pModel.setDateOfBirth(Calendar.getInstance().getTime());
         pModel.setId("A001");
-        pModel.setTitle("Person");
+        pModel.setTitle("Details");
         pModel.setMode(ViewMode.READ_ONLY);
         PersonPanel personPanel = new PersonPanel(pModel, bindingService);
         setDefaultBorder(personPanel, personPanel.getModel().getTitle());
 
-        final AddressModel aModel = new AddressModel();
-        aModel.setAddress1("35 Runway Drive");
+        NameModel nModel = new NameModel();
+        nModel.setName("");
+        nModel.setTitle("Trading As");
+        nModel.setMode(ViewMode.READ_ONLY);
+        NamePanel namePanel = new NamePanel(nModel, bindingService);
+        setDefaultBorder(namePanel, namePanel.getModel().getTitle());
+
+        final AddressModel raModel = new AddressModel();
+        raModel.setAddress1("35 Runway Drive");
         // aModel.setAddress2("Doo Dah");
-        aModel.setPostcodes(ObservableCollections.observableList(getPostcodes()));
-        aModel.setPostcode("5000");
-        aModel.setSuburb("Happyville");
-        aModel.setStates(ObservableCollections.observableList(getStates()));
-        aModel.setState("SA");
-        aModel.setTitle("Address");
-        aModel.setMode(ViewMode.READ_ONLY);
-        AddressPanel addressPanel = new AddressPanel(aModel, bindingService);
-        setDefaultBorder(addressPanel, addressPanel.getModel().getTitle());
+        raModel.setPostcodes(ObservableCollections.observableList(getPostcodes()));
+        raModel.setPostcode("5000");
+        raModel.setSuburb("Happyville");
+        raModel.setStates(ObservableCollections.observableList(getStates()));
+        raModel.setState("SA");
+        raModel.setTitle("Residential");
+        raModel.setMode(ViewMode.READ_ONLY);
+        AddressPanel resAddressPanel = new AddressPanel(raModel, bindingService);
+        setDefaultBorder(resAddressPanel, resAddressPanel.getModel().getTitle());
+
+        final AddressModel paModel = new AddressModel();
+        paModel.setAddress1("PO BOX 31");
+        // aModel.setAddress2("Doo Dah");
+        paModel.setPostcodes(ObservableCollections.observableList(getPostcodes()));
+        paModel.setPostcode("5000");
+        paModel.setSuburb("Happyville");
+        paModel.setStates(ObservableCollections.observableList(getStates()));
+        paModel.setState("SA");
+        paModel.setTitle("Postal");
+        paModel.setMode(ViewMode.READ_ONLY);
+        AddressPanel posAddressPanel = new AddressPanel(paModel, bindingService);
+        setDefaultBorder(posAddressPanel, posAddressPanel.getModel().getTitle());
 
         ContactsModel cModel = new ContactsModel();
         cModel.setEmail("blah@blah.com");
@@ -89,14 +109,30 @@ public class View extends JPanel {
         ContactsPanel contactsPanel = new ContactsPanel(cModel, bindingService);
         setDefaultBorder(contactsPanel, contactsPanel.getModel().getTitle());
 
+        PersonDetailsModel pdModel = new PersonDetailsModel();
+        pdModel.setEyeColour("Brown");
+        pdModel.setEyeColours(ObservableCollections.observableList(getEyeColours()));
+        pdModel.setGender("Male");
+        pdModel.setGenders(ObservableCollections.observableList(getGenders()));
+        pdModel.setHeight("180");
+        pdModel.setTitle("Personal Details");
+        pdModel.setMode(ViewMode.READ_ONLY);
+        PersonDetailsPanel personDetailsPanel = new PersonDetailsPanel(pdModel, bindingService);
+        setDefaultBorder(personDetailsPanel, personDetailsPanel.getModel().getTitle());
+
         JPanel panel = new JPanel();
         panel.setBorder(Borders.DIALOG);
         DefaultFormBuilder builder = new DefaultFormBuilder(new FormLayout(LayoutFactory2.relatedColumnSpec(2, 1, 2),
-                        LayoutFactory2.relatedRowSpec(2, "top")), panel);
+                        LayoutFactory2.relatedRowSpec(4, "top")), panel);
         builder.append(personPanel);
-        builder.append(addressPanel);
+        builder.append(resAddressPanel);
+        builder.nextLine(2);
+        builder.append(namePanel);
+        builder.append(posAddressPanel);
         builder.nextLine(2);
         builder.append(contactsPanel);
+        builder.nextLine(2);
+        builder.append(personDetailsPanel);
 
         // Schedule some tasks to update combo boxes (they are properly updated)
         final ScheduledExecutorService pool = Executors.newScheduledThreadPool(2);
@@ -104,14 +140,14 @@ public class View extends JPanel {
             @Override
             public void run() {
                 LOGGER.info("changing states list");
-                aModel.setStates(ObservableCollections.observableList(getStates2()));
+                paModel.setStates(ObservableCollections.observableList(getStates2()));
             }
         }, 5, TimeUnit.SECONDS);
         pool.schedule(new Runnable() {
             @Override
             public void run() {
                 LOGGER.info("adding postcodes");
-                aModel.getPostcodes().addAll(getPostcodes2());
+                paModel.getPostcodes().addAll(getPostcodes2());
             }
         }, 10, TimeUnit.SECONDS);
         pool.shutdown();
@@ -162,4 +198,20 @@ public class View extends JPanel {
         states.add("VIC");
         return states;
     }
+
+    private static List<String> getEyeColours() {
+        List<String> l = new ArrayList<String>();
+        l.add("Blue");
+        l.add("Brown");
+        l.add("Green");
+        return l;
+    }
+
+    private static List<String> getGenders() {
+        List<String> l = new ArrayList<String>();
+        l.add("Male");
+        l.add("Female");
+        return l;
+    }
+
 }

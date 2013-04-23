@@ -70,9 +70,6 @@ public class PersonModel extends DualModePresentationModel {
         this.surnameLabel = "Surname";
     }
 
-    // Data properties
-    // -----------------------------------------------------------------------------------------------------------------
-
     public Date getDateOfBirth() {
         return this.dateOfBirth;
     }
@@ -83,59 +80,6 @@ public class PersonModel extends DualModePresentationModel {
         getPropertyChangeSupport().firePropertyChange("dateOfBirth", oldValue, newValue);
     }
 
-    public Date getDateDeceased() {
-        return this.dateDeceased;
-    }
-
-    public void setDateDeceased(Date newValue) {
-        Date oldValue = this.dateDeceased;
-        this.dateDeceased = newValue;
-        getPropertyChangeSupport().firePropertyChange("dateDeceased", oldValue, newValue);
-    }
-
-    public String getFirstName() {
-        return this.firstName;
-    }
-
-    public void setFirstName(String newValue) {
-        String oldValue = this.firstName;
-        this.firstName = newValue;
-        getPropertyChangeSupport().firePropertyChange("firstName", oldValue, newValue);
-    }
-
-    public String getId() {
-        return this.id;
-    }
-
-    public void setId(String newValue) {
-        String oldValue = this.id;
-        this.id = newValue;
-        getPropertyChangeSupport().firePropertyChange("id", oldValue, newValue);
-    }
-
-    public String getOtherNames() {
-        return this.otherNames;
-    }
-
-    public void setOtherNames(String newValue) {
-        String oldValue = this.otherNames;
-        this.otherNames = newValue;
-        getPropertyChangeSupport().firePropertyChange("otherNames", oldValue, newValue);
-    }
-
-    public String getSurname() {
-        return this.surname;
-    }
-
-    public void setSurname(String newValue) {
-        String oldValue = this.surname;
-        this.surname = newValue;
-        getPropertyChangeSupport().firePropertyChange("surname", oldValue, newValue);
-    }
-
-    // State properties
-    // -----------------------------------------------------------------------------------------------------------------
-
     public boolean getDateOfBirthEditable() {
         return this.dateOfBirthEditable;
     }
@@ -145,6 +89,26 @@ public class PersonModel extends DualModePresentationModel {
         boolean oldValue = this.dateOfBirthEditable;
         this.dateOfBirthEditable = newValue;
         getPropertyChangeSupport().firePropertyChange("dateOfBirthEditable", oldValue, newValue);
+    }
+
+    public String getDateOfBirthLabel() {
+        return this.dateOfBirthLabel;
+    }
+
+    public void setDateOfBirthLabel(String newValue) {
+        String oldValue = this.dateOfBirthLabel;
+        this.dateOfBirthLabel = newValue;
+        getPropertyChangeSupport().firePropertyChange("dateOfBirthLabel", oldValue, newValue);
+    }
+
+    public Date getDateDeceased() {
+        return this.dateDeceased;
+    }
+
+    public void setDateDeceased(Date newValue) {
+        Date oldValue = this.dateDeceased;
+        this.dateDeceased = newValue;
+        getPropertyChangeSupport().firePropertyChange("dateDeceased", oldValue, newValue);
     }
 
     public boolean getDateDeceasedEditable() {
@@ -158,6 +122,26 @@ public class PersonModel extends DualModePresentationModel {
         getPropertyChangeSupport().firePropertyChange("dateDeceasedEditable", oldValue, newValue);
     }
 
+    public String getDateDeceasedLabel() {
+        return this.dateDeceasedLabel;
+    }
+
+    public void setDateDeceasedLabel(String newValue) {
+        String oldValue = this.dateDeceasedLabel;
+        this.dateDeceasedLabel = newValue;
+        getPropertyChangeSupport().firePropertyChange("dateDeceasedLabel", oldValue, newValue);
+    }
+
+    public String getFirstName() {
+        return this.firstName;
+    }
+
+    public void setFirstName(String newValue) {
+        String oldValue = this.firstName;
+        this.firstName = newValue;
+        getPropertyChangeSupport().firePropertyChange("firstName", oldValue, newValue);
+    }
+
     public boolean getFirstNameEditable() {
         return this.firstNameEditable;
     }
@@ -167,6 +151,26 @@ public class PersonModel extends DualModePresentationModel {
         boolean oldValue = this.firstNameEditable;
         this.firstNameEditable = newValue;
         getPropertyChangeSupport().firePropertyChange("firstNameEditable", oldValue, newValue);
+    }
+
+    public String getFirstNameLabel() {
+        return this.firstNameLabel;
+    }
+
+    public void setFirstNameLabel(String newValue) {
+        String oldValue = this.firstNameLabel;
+        this.firstNameLabel = newValue;
+        getPropertyChangeSupport().firePropertyChange("firstNameLabel", oldValue, newValue);
+    }
+
+    public String getId() {
+        return this.id;
+    }
+
+    public void setId(String newValue) {
+        String oldValue = this.id;
+        this.id = newValue;
+        getPropertyChangeSupport().firePropertyChange("id", oldValue, newValue);
     }
 
     public boolean getIdEditable() {
@@ -180,6 +184,26 @@ public class PersonModel extends DualModePresentationModel {
         getPropertyChangeSupport().firePropertyChange("idEditable", oldValue, newValue);
     }
 
+    public String getIdLabel() {
+        return this.idLabel;
+    }
+
+    public void setIdLabel(String newValue) {
+        String oldValue = this.idLabel;
+        this.idLabel = newValue;
+        getPropertyChangeSupport().firePropertyChange("idLabel", oldValue, newValue);
+    }
+
+    public String getOtherNames() {
+        return this.otherNames;
+    }
+
+    public void setOtherNames(String newValue) {
+        String oldValue = this.otherNames;
+        this.otherNames = newValue;
+        getPropertyChangeSupport().firePropertyChange("otherNames", oldValue, newValue);
+    }
+
     public boolean getOtherNamesEditable() {
         return this.otherNamesEditable;
     }
@@ -191,6 +215,26 @@ public class PersonModel extends DualModePresentationModel {
         getPropertyChangeSupport().firePropertyChange("otherNamesEditable", oldValue, newValue);
     }
 
+    public String getOtherNamesLabel() {
+        return this.otherNamesLabel;
+    }
+
+    public void setOtherNamesLabel(String newValue) {
+        String oldValue = this.otherNamesLabel;
+        this.otherNamesLabel = newValue;
+        getPropertyChangeSupport().firePropertyChange("otherNamesLabel", oldValue, newValue);
+    }
+
+    public String getSurname() {
+        return this.surname;
+    }
+
+    public void setSurname(String newValue) {
+        String oldValue = this.surname;
+        this.surname = newValue;
+        getPropertyChangeSupport().firePropertyChange("surname", oldValue, newValue);
+    }
+
     public boolean getSurnameEditable() {
         return this.surnameEditable;
     }
@@ -200,56 +244,6 @@ public class PersonModel extends DualModePresentationModel {
         boolean oldValue = this.surnameEditable;
         this.surnameEditable = newValue;
         getPropertyChangeSupport().firePropertyChange("surnameEditable", oldValue, newValue);
-    }
-
-    public String getDateOfBirthLabel() {
-        return this.dateOfBirthLabel;
-    }
-
-    public void setDateOfBirthLabel(String newValue) {
-        String oldValue = this.dateOfBirthLabel;
-        this.dateOfBirthLabel = newValue;
-        getPropertyChangeSupport().firePropertyChange("dateOfBirthLabel", oldValue, newValue);
-    }
-
-    public String getDateDeceasedLabel() {
-        return this.dateDeceasedLabel;
-    }
-
-    public void setDateDeceasedLabel(String newValue) {
-        String oldValue = this.dateDeceasedLabel;
-        this.dateDeceasedLabel = newValue;
-        getPropertyChangeSupport().firePropertyChange("dateDeceasedLabel", oldValue, newValue);
-    }
-
-    public String getIdLabel() {
-        return this.idLabel;
-    }
-
-    public void setIdLabel(String newValue) {
-        String oldValue = this.idLabel;
-        this.idLabel = newValue;
-        getPropertyChangeSupport().firePropertyChange("idLabel", oldValue, newValue);
-    }
-
-    public String getFirstNameLabel() {
-        return this.firstNameLabel;
-    }
-
-    public void setFirstNameLabel(String newValue) {
-        String oldValue = this.firstNameLabel;
-        this.firstNameLabel = newValue;
-        getPropertyChangeSupport().firePropertyChange("firstNameLabel", oldValue, newValue);
-    }
-
-    public String getOtherNamesLabel() {
-        return this.otherNamesLabel;
-    }
-
-    public void setOtherNamesLabel(String newValue) {
-        String oldValue = this.otherNamesLabel;
-        this.otherNamesLabel = newValue;
-        getPropertyChangeSupport().firePropertyChange("otherNamesLabel", oldValue, newValue);
     }
 
     public String getSurnameLabel() {
