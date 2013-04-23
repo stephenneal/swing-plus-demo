@@ -1,53 +1,42 @@
 package com.swing.demo;
 
 import java.awt.BorderLayout;
+import java.awt.Dimension;
 import java.awt.event.WindowAdapter;
 import java.awt.event.WindowEvent;
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.Calendar;
-import java.util.List;
 
-import javax.swing.BorderFactory;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
+import javax.swing.JScrollPane;
+import javax.swing.JSplitPane;
+import javax.swing.JTree;
 import javax.swing.SwingUtilities;
+import javax.swing.event.TreeSelectionEvent;
+import javax.swing.event.TreeSelectionListener;
+import javax.swing.tree.DefaultMutableTreeNode;
+import javax.swing.tree.DefaultTreeModel;
+import javax.swing.tree.TreeNode;
 
-import org.jdesktop.observablecollections.ObservableCollections;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
-import com.jgoodies.forms.builder.DefaultFormBuilder;
 import com.jgoodies.forms.factories.Borders;
-import com.jgoodies.forms.layout.FormLayout;
 import com.swing.binding.bbb.BindingService;
-import com.swing.demo.data.EnumConverter;
-import com.swing.demo.data.EyeColours;
-import com.swing.demo.data.Genders;
-import com.swing.demo.data.States;
-import com.swing.demo.layout.LayoutFactory2;
-import com.swing.demo.panels.AddressModel;
 import com.swing.demo.panels.AddressPanel;
-import com.swing.demo.panels.ContactsModel;
-import com.swing.demo.panels.ContactsPanel;
-import com.swing.demo.panels.NameModel;
 import com.swing.demo.panels.NamePanel;
-import com.swing.demo.panels.PersonDetailsModel;
-import com.swing.demo.panels.PersonDetailsPanel;
-import com.swing.demo.panels.PersonModel;
 import com.swing.demo.panels.PersonPanel;
+import com.swing.plus.PanelFactory;
 import com.swing.plus.mvc.DualModePresentationModel.ViewMode;
 
-@SuppressWarnings("serial")
-public class PanelsDemo extends JPanel {
+public class PanelsDemo {
 
     @SuppressWarnings("unused")
     private static final Logger LOGGER = LoggerFactory.getLogger(PanelsDemo.class);
 
     public static void main(String[] args) {
         final BindingService binding = new BindingService();
-        final JPanel panel = createPanel(binding);
-        final JFrame frame = new JFrame("Swing Plus Binding Demo");
+        final JPanel panel = createContentPane(binding);
+        final JFrame frame = new JFrame("Panels Demo");
         frame.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
         frame.addWindowListener(new WindowAdapter() {
             @Override
@@ -66,126 +55,101 @@ public class PanelsDemo extends JPanel {
         });
     }
 
-    private static JPanel createPanel(BindingService bindingService) {
-        PersonModel pModel = new PersonModel();
-        pModel.setFirstName("Geoff");
-        pModel.setOtherNames("Robert");
-        pModel.setSurname("Giles");
-        pModel.setDateOfBirth(Calendar.getInstance().getTime());
-        pModel.setId("A001");
-        pModel.setTitle("Details");
-        pModel.setMode(ViewMode.READ_ONLY);
-        PersonPanel personPanel = new PersonPanel(pModel, bindingService);
-        setDefaultBorder(personPanel, personPanel.getModel().getTitle());
+    private static JPanel createContentPane(final BindingService bindingService) {
+        final JPanel panelsPanel = PanelFactory.boxX();
+        panelsPanel.setBorder(Borders.DIALOG);
+        JScrollPane panelsPane = new JScrollPane(panelsPanel);
+        panelsPane.setMinimumSize(new Dimension(400, 800));
+        panelsPane.setPreferredSize(new Dimension(1100, 800));
 
-        NameModel nModel = new NameModel();
-        nModel.setName("");
-        nModel.setTitle("Trading As");
-        nModel.setMode(ViewMode.READ_ONLY);
-        NamePanel namePanel = new NamePanel(nModel, bindingService);
-        setDefaultBorder(namePanel, namePanel.getModel().getTitle());
+        DefaultTreeModel treeModel = new DefaultTreeModel(getRoot(bindingService));
+        final JTree tree = new JTree(treeModel);
+        JScrollPane treePane = new JScrollPane(tree);
+        treePane.setMinimumSize(new Dimension(200, 800));
 
-        final AddressModel raModel = new AddressModel();
-        raModel.setAddress1("35 Runway Drive");
-        // aModel.setAddress2("Doo Dah");
-        raModel.setPostcodes(ObservableCollections.observableList(getPostcodes()));
-        raModel.setPostcode("5000");
-        raModel.setStates(ObservableCollections.observableList(getStates()));
-        raModel.setState("SA");
-        raModel.setSuburb("Happyville");
-        raModel.setSuburbs(ObservableCollections.observableList(getSuburbs()));
-        raModel.setTitle("Residential");
-        raModel.setMode(ViewMode.READ_ONLY);
-        AddressPanel resAddressPanel = new AddressPanel(raModel, bindingService);
-        setDefaultBorder(resAddressPanel, resAddressPanel.getModel().getTitle());
+        final JSplitPane split = new JSplitPane(JSplitPane.HORIZONTAL_SPLIT, treePane, panelsPane);
+        split.setOneTouchExpandable(true);
+        split.setDividerLocation(250);
 
-        final AddressModel paModel = new AddressModel();
-        paModel.setAddress1("PO BOX 31");
-        // aModel.setAddress2("Doo Dah");
-        paModel.setPostcodes(ObservableCollections.observableList(getPostcodes()));
-        paModel.setPostcode("5000");
-        paModel.setStates(ObservableCollections.observableList(getStates()));
-        paModel.setState("SA");
-        paModel.setSuburb("Happyville");
-        paModel.setSuburbs(ObservableCollections.observableList(getSuburbs()));
-        paModel.setTitle("Postal");
-        paModel.setMode(ViewMode.READ_ONLY);
-        AddressPanel posAddressPanel = new AddressPanel(paModel, bindingService);
-        setDefaultBorder(posAddressPanel, posAddressPanel.getModel().getTitle());
+        tree.addTreeSelectionListener(new TreeSelectionListener() {
+            @Override
+            public void valueChanged(TreeSelectionEvent e) {
+                DefaultMutableTreeNode node = (DefaultMutableTreeNode) tree.getLastSelectedPathComponent();
 
-        ContactsModel cModel = new ContactsModel();
-        cModel.setEmail("blah@blah.com");
-        cModel.setFax("08 8111 1111");
-        cModel.setPhoneHome("08 8111 1112");
-        cModel.setPhoneWork("08 8111 1111");
-        cModel.setPhoneMobile("0444 111 111");
-        cModel.setTitle("Contact");
-        cModel.setMode(ViewMode.READ_ONLY);
-        ContactsPanel contactsPanel = new ContactsPanel(cModel, bindingService);
-        setDefaultBorder(contactsPanel, contactsPanel.getModel().getTitle());
+                if (node == null) {
+                    return;
+                }
+                final Object nodeObject = node.getUserObject();
+                if (nodeObject instanceof PanelUserObject) {
+                    panelsPanel.removeAll();
+                    JPanel panel = ((PanelUserObject) nodeObject).getPanel();
+                    panelsPanel.add(panel);
+                    panel.revalidate();
+                    panelsPanel.repaint();
+                }
+            }
+        });
 
-        PersonDetailsModel pdModel = new PersonDetailsModel();
-        pdModel.setEyeColour("Brown");
-        pdModel.setEyeColours(ObservableCollections.observableList(getEyeColours()));
-        pdModel.setGender("Male");
-        pdModel.setGenders(ObservableCollections.observableList(getGenders()));
-        pdModel.setHeight("180");
-        pdModel.setTitle("Personal Details");
-        pdModel.setMode(ViewMode.READ_ONLY);
-        PersonDetailsPanel personDetailsPanel = new PersonDetailsPanel(pdModel, bindingService);
-        setDefaultBorder(personDetailsPanel, personDetailsPanel.getModel().getTitle());
-
-        JPanel panel = new JPanel();
-        panel.setBorder(Borders.DIALOG);
-        DefaultFormBuilder builder = new DefaultFormBuilder(new FormLayout(LayoutFactory2.relatedColumnSpec(2, 1, 2),
-                        LayoutFactory2.relatedRowSpec(4, "top")), panel);
-        builder.append(personPanel);
-        builder.append(resAddressPanel);
-        builder.nextLine(2);
-        builder.append(namePanel);
-        builder.append(posAddressPanel);
-        builder.nextLine(2);
-        builder.append(contactsPanel);
-        builder.nextLine(2);
-        builder.append(personDetailsPanel);
-
+        JPanel panel = PanelFactory.boxX();
+        panel.add(split);
         return panel;
     }
 
-    private static void setDefaultBorder(JPanel panel, String title) {
-        panel.setBorder(BorderFactory.createCompoundBorder(BorderFactory.createTitledBorder(title), Borders.DIALOG));
+    private static TreeNode getRoot(BindingService bindingService) {
+        DefaultMutableTreeNode root = new DefaultMutableTreeNode("Panels");
+
+        JPanel person1 = PanelsDemoFactory.newPersonPanel(bindingService, "Person (no data)", false, false);
+        JPanel person2 = PanelsDemoFactory.newPersonPanel(bindingService, "Person (with data)", false, true);
+        PersonPanel person3 = PanelsDemoFactory.newPersonPanel(bindingService, "Person (read only, no data)", true,
+                        false);
+        PersonPanel person4 = PanelsDemoFactory.newPersonPanel(bindingService, "Person (read only, with data)", true,
+                        true);
+        person4.getModel().setMode(ViewMode.READ_ONLY);
+        root.add(new DefaultMutableTreeNode(new PanelUserObject("Person Panel", PanelFactory.grid(0, 2, person1,
+                        person2, person3, person4))));
+
+        JPanel address1 = PanelsDemoFactory.newAddressPanel(bindingService, "Address (no data)", false, false);
+        JPanel address2 = PanelsDemoFactory.newAddressPanel(bindingService, "Address (with data)", false, true);
+        AddressPanel address3 = PanelsDemoFactory.newAddressPanel(bindingService, "Address (read only, no data)", true,
+                        false);
+        address3.getModel().setMode(ViewMode.READ_ONLY);
+        AddressPanel address4 = PanelsDemoFactory.newAddressPanel(bindingService, "Address (read only, with data)",
+                        true, true);
+        address4.getModel().setMode(ViewMode.READ_ONLY);
+        root.add(new DefaultMutableTreeNode(new PanelUserObject("Address Panel", PanelFactory.grid(0, 2, address1,
+                        address2, address3, address4))));
+
+        JPanel name1 = PanelsDemoFactory.newNamePanel(bindingService, "Name (no data)", false, false);
+        JPanel name2 = PanelsDemoFactory.newNamePanel(bindingService, "Name (with data)", false, true);
+        NamePanel name3 = PanelsDemoFactory.newNamePanel(bindingService, "Name (read only, no data)", true, false);
+        name3.getModel().setMode(ViewMode.READ_ONLY);
+        NamePanel name4 = PanelsDemoFactory.newNamePanel(bindingService, "Name (read only, with data)", true, true);
+        name4.getModel().setMode(ViewMode.READ_ONLY);
+        root.add(new DefaultMutableTreeNode(new PanelUserObject("Name Panel", PanelFactory.grid(0, 2, name1, name2,
+                        name3, name4))));
+
+        return root;
     }
 
-    private static List<String> getEyeColours() {
-        return Arrays.asList(EnumConverter.wordsTitleCase(EyeColours.values()));
-    }
+    private static class PanelUserObject {
 
-    private static List<String> getGenders() {
-        return Arrays.asList(EnumConverter.wordsTitleCase(Genders.values()));
-    }
+        private final JPanel panel;
+        private final String nodeText;
 
-    private static List<String> getPostcodes() {
-        List<String> l = new ArrayList<String>();
-        l.add("5000");
-        l.add("5001");
-        l.add("5003");
-        l.add("5004");
-        l.add("5005");
-        l.add("5006");
-        return l;
-    }
+        public PanelUserObject(String nodeText, JPanel panel) {
+            super();
+            this.nodeText = nodeText;
+            this.panel = panel;
+        }
 
-    private static List<String> getStates() {
-        return Arrays.asList(EnumConverter.nameToString(States.values()));
-    }
+        public JPanel getPanel() {
+            return this.panel;
+        }
 
-    private static List<String> getSuburbs() {
-        List<String> l = new ArrayList<String>();
-        l.add("Anywhere");
-        l.add("Happyville");
-        l.add("Here And There");
-        l.add("Suburbia");
-        return l;
-    }
+        @Override
+        public String toString() {
+            return this.nodeText == null || this.nodeText.isEmpty() ? super.toString() : this.nodeText;
+        }
 
+    }
 }
