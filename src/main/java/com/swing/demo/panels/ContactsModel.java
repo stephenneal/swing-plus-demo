@@ -1,4 +1,4 @@
-package com.swing.demo;
+package com.swing.demo.panels;
 
 import java.util.Date;
 

@@ -1,4 +1,4 @@
-package com.swing.demo;
+package com.swing.demo.panels;
 
 import javax.swing.JLabel;
 import javax.swing.JTextField;
@@ -8,8 +8,8 @@ import com.jgoodies.forms.layout.FormLayout;
 import com.swing.binding.bbb.BindingService;
 import com.swing.binding.bbb.StateBinding;
 import com.swing.binding.bbb.TextBinding;
-import com.swing.demo.NameModel.Properties;
 import com.swing.demo.layout.LayoutFactory2;
+import com.swing.demo.panels.NameModel.Properties;
 import com.swing.plus.mvc.PlusJPanel;
 
 @SuppressWarnings("serial")

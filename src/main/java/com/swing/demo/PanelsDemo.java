@@ -24,12 +24,22 @@ import com.jgoodies.forms.factories.Borders;
 import com.jgoodies.forms.layout.FormLayout;
 import com.swing.binding.bbb.BindingService;
 import com.swing.demo.layout.LayoutFactory2;
+import com.swing.demo.panels.AddressModel;
+import com.swing.demo.panels.AddressPanel;
+import com.swing.demo.panels.ContactsModel;
+import com.swing.demo.panels.ContactsPanel;
+import com.swing.demo.panels.NameModel;
+import com.swing.demo.panels.NamePanel;
+import com.swing.demo.panels.PersonDetailsModel;
+import com.swing.demo.panels.PersonDetailsPanel;
+import com.swing.demo.panels.PersonModel;
+import com.swing.demo.panels.PersonPanel;
 import com.swing.plus.mvc.DualModePresentationModel.ViewMode;
 
 @SuppressWarnings("serial")
-public class View extends JPanel {
+public class PanelsDemo extends JPanel {
 
-    private static final Logger LOGGER = LoggerFactory.getLogger(View.class);
+    private static final Logger LOGGER = LoggerFactory.getLogger(PanelsDemo.class);
 
     public static void main(String[] args) {
         final BindingService binding = new BindingService();

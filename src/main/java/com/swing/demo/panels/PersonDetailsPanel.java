@@ -1,4 +1,4 @@
-package com.swing.demo;
+package com.swing.demo.panels;
 
 import javax.swing.JComboBox;
 import javax.swing.JLabel;
@@ -10,8 +10,8 @@ import com.swing.binding.bbb.BindingService;
 import com.swing.binding.bbb.ListBinding;
 import com.swing.binding.bbb.StateBinding;
 import com.swing.binding.bbb.TextBinding;
-import com.swing.demo.PersonDetailsModel.Properties;
 import com.swing.demo.layout.LayoutFactory2;
+import com.swing.demo.panels.PersonDetailsModel.Properties;
 import com.swing.plus.mvc.PlusJPanel;
 
 @SuppressWarnings("serial")
