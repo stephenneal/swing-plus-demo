@@ -26,6 +26,7 @@ import com.swing.demo.panels.PersonDetailsModel;
 import com.swing.demo.panels.PersonDetailsPanel;
 import com.swing.demo.panels.PersonModel;
 import com.swing.demo.panels.PersonPanel;
+import com.swing.plus.PanelFactory;
 import com.swing.plus.mvc.DualModePresentationModel.ViewMode;
 
 public class PanelsDemoFactory {
@@ -51,7 +52,16 @@ public class PanelsDemoFactory {
             model.setSuburb("Happyville");
         }
         AddressPanel panel = new AddressPanel(model, bindingService);
-        setDefaultBorder(panel, panel.getModel().getTitle());
+        setDefaultBorder(panel, title);
+        return panel;
+    }
+
+    protected static JPanel newAddressesPanel(BindingService bindingService, String title, boolean readOnly,
+                    boolean populateDefault) {
+        AddressPanel comboResAdd = newAddressPanel(bindingService, "Residential Address", true, true);
+        AddressPanel comboPosAdd = newAddressPanel(bindingService, "Postal Address", true, true);
+        JPanel panel = PanelFactory.grid(0, 1, comboResAdd, comboPosAdd);
+        setDefaultBorder(panel, title);
         return panel;
     }
 
@@ -70,7 +80,7 @@ public class PanelsDemoFactory {
             model.setPhoneMobile("0444 111 111");
         }
         ContactsPanel panel = new ContactsPanel(model, bindingService);
-        setDefaultBorder(panel, panel.getModel().getTitle());
+        setDefaultBorder(panel, title);
         return panel;
     }
 
@@ -85,7 +95,7 @@ public class PanelsDemoFactory {
             model.setName("Some Other Name");
         }
         NamePanel panel = new NamePanel(model, bindingService);
-        setDefaultBorder(panel, panel.getModel().getTitle());
+        setDefaultBorder(panel, title);
         return panel;
     }
 
@@ -104,7 +114,7 @@ public class PanelsDemoFactory {
             model.setId("A001");
         }
         PersonPanel panel = new PersonPanel(model, bindingService);
-        setDefaultBorder(panel, panel.getModel().getTitle());
+        setDefaultBorder(panel, title);
         return panel;
     }
 
@@ -124,7 +134,7 @@ public class PanelsDemoFactory {
             model.setTitle("Personal Details");
         }
         PersonDetailsPanel panel = new PersonDetailsPanel(model, bindingService);
-        setDefaultBorder(panel, panel.getModel().getTitle());
+        setDefaultBorder(panel, title);
         return panel;
     }
 
