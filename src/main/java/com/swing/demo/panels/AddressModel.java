@@ -25,6 +25,7 @@ public class AddressModel extends DualModePresentationModel {
         public static Property<AddressModel, String> STATE = create("state");
         public static Property<AddressModel, List<String>> STATES = create("states");
         public static Property<AddressModel, String> SUBURB = create("suburb");
+        public static Property<AddressModel, List<String>> SUBURBS = create("suburbs");
 
         public static Property<AddressModel, Date> ADDRESS1_LABEL = create("address1Label");
         public static Property<AddressModel, String> ADDRESS2_LABEL = create("address2Label");
@@ -35,8 +36,11 @@ public class AddressModel extends DualModePresentationModel {
         public static Property<AddressModel, Boolean> ADDRESS1_EDITABLE = create("address1Editable");
         public static Property<AddressModel, Boolean> ADDRESS2_EDITABLE = create("address2Editable");
         public static Property<AddressModel, Boolean> POSTCODE_EDITABLE = create("postcodeEditable");
+        public static Property<AddressModel, Boolean> POSTCODE_ENABLED = create("postcodeEnabled");
         public static Property<AddressModel, Boolean> STATE_EDITABLE = create("stateEditable");
+        public static Property<AddressModel, Boolean> STATE_ENABLED = create("stateEnabled");
         public static Property<AddressModel, Boolean> SUBURB_EDITABLE = create("suburbEditable");
+        public static Property<AddressModel, Boolean> SUBURB_ENABLED = create("suburbEnabled");
     }
 
     private String address1;
@@ -46,12 +50,16 @@ public class AddressModel extends DualModePresentationModel {
     private String state;
     private ObservableList<String> states;
     private String suburb;
+    private ObservableList<String> suburbs;
 
     private boolean address1Editable;
     private boolean address2Editable;
     private boolean postcodeEditable;
+    private boolean postcodeEnabled;
     private boolean stateEditable;
+    private boolean stateEnabled;
     private boolean suburbEditable;
+    private boolean suburbEnabled;
 
     private String address1Label;
     private String address2Label;
@@ -152,6 +160,17 @@ public class AddressModel extends DualModePresentationModel {
         getPropertyChangeSupport().firePropertyChange("postcodeEditable", oldValue, newValue);
     }
 
+    public boolean getPostcodeEnabled() {
+        return this.postcodeEnabled;
+    }
+
+    @ReadOnlyParticipant
+    public void setPostcodeEnabled(boolean newValue) {
+        boolean oldValue = this.postcodeEnabled;
+        this.postcodeEnabled = newValue;
+        getPropertyChangeSupport().firePropertyChange("postcodeEnabled", oldValue, newValue);
+    }
+
     public String getPostcodeLabel() {
         return this.postcodeLabel;
     }
@@ -191,6 +210,17 @@ public class AddressModel extends DualModePresentationModel {
         boolean oldValue = this.stateEditable;
         this.stateEditable = newValue;
         getPropertyChangeSupport().firePropertyChange("stateEditable", oldValue, newValue);
+    }
+
+    public boolean getStateEnabled() {
+        return this.stateEnabled;
+    }
+
+    @ReadOnlyParticipant
+    public void setStateEnabled(boolean newValue) {
+        boolean oldValue = this.stateEnabled;
+        this.stateEnabled = newValue;
+        getPropertyChangeSupport().firePropertyChange("stateEnabled", oldValue, newValue);
     }
 
     public String getStateLabel() {
@@ -234,6 +264,17 @@ public class AddressModel extends DualModePresentationModel {
         getPropertyChangeSupport().firePropertyChange("suburbEditable", oldValue, newValue);
     }
 
+    public boolean getSuburbEnabled() {
+        return this.suburbEnabled;
+    }
+
+    @ReadOnlyParticipant
+    public void setSuburbEnabled(boolean newValue) {
+        boolean oldValue = this.suburbEnabled;
+        this.suburbEnabled = newValue;
+        getPropertyChangeSupport().firePropertyChange("suburbEnabled", oldValue, newValue);
+    }
+
     public String getSuburbLabel() {
         return this.suburbLabel;
     }
@@ -242,6 +283,16 @@ public class AddressModel extends DualModePresentationModel {
         String oldValue = this.suburbLabel;
         this.suburbLabel = newValue;
         getPropertyChangeSupport().firePropertyChange("suburbLabel", oldValue, newValue);
+    }
+
+    public ObservableList<String> getSuburbs() {
+        return this.suburbs;
+    }
+
+    public void setSuburbs(ObservableList<String> newValue) {
+        ObservableList<String> oldValue = this.suburbs;
+        this.suburbs = newValue;
+        getPropertyChangeSupport().firePropertyChange("suburbs", oldValue, newValue);
     }
 
 }

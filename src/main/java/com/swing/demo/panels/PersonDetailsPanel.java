@@ -40,9 +40,13 @@ public class PersonDetailsPanel extends PlusJPanel<PersonDetailsModel> {
         this.eyeColours = new JComboBox();
 
         // Bind the Swing components to the model
-        bind(TextBinding.text(model, Properties.HEIGHT_LABEL, this.heightLabel));
-        bind(TextBinding.text(model, Properties.HEIGHT, this.height));
-        bind(StateBinding.editable(model, Properties.HEIGHT_EDITABLE, this.height));
+        bind(TextBinding.text(model, Properties.EYE_COLOUR_LABEL, this.eyeColourLabel));
+        // bind(TextBinding.text(model, Properties.EYE_COLOUR, this.eyeColour));
+        // bind(StateBinding.editable(model, Properties.EYE_COLOUR_EDITABLE, this.eyeColour));
+        bind(ListBinding.model(model, Properties.EYE_COLOURS, this.eyeColours));
+        bind(ListBinding.selection(model, Properties.EYE_COLOUR, this.eyeColours));
+        bind(StateBinding.editable(model, Properties.EYE_COLOUR_EDITABLE, this.eyeColours));
+        bind(StateBinding.enabled(model, Properties.EYE_COLOUR_ENABLED, this.eyeColours));
 
         bind(TextBinding.text(model, Properties.GENDER_LABEL, this.genderLabel));
         // bind(TextBinding.text(model, Properties.GENDER, this.gender));
@@ -50,13 +54,11 @@ public class PersonDetailsPanel extends PlusJPanel<PersonDetailsModel> {
         bind(ListBinding.model(model, Properties.GENDERS, this.genders));
         bind(ListBinding.selection(model, Properties.GENDER, this.genders));
         bind(StateBinding.editable(model, Properties.GENDER_EDITABLE, this.genders));
+        bind(StateBinding.enabled(model, Properties.GENDER_ENABLED, this.genders));
 
-        bind(TextBinding.text(model, Properties.EYE_COLOUR_LABEL, this.eyeColourLabel));
-        // bind(TextBinding.text(model, Properties.EYE_COLOUR, this.eyeColour));
-        // bind(StateBinding.editable(model, Properties.EYE_COLOUR_EDITABLE, this.eyeColour));
-        bind(ListBinding.model(model, Properties.EYE_COLOURS, this.eyeColours));
-        bind(ListBinding.selection(model, Properties.EYE_COLOUR, this.eyeColours));
-        bind(StateBinding.editable(model, Properties.EYE_COLOUR_EDITABLE, this.eyeColours));
+        bind(TextBinding.text(model, Properties.HEIGHT_LABEL, this.heightLabel));
+        bind(TextBinding.text(model, Properties.HEIGHT, this.height));
+        bind(StateBinding.editable(model, Properties.HEIGHT_EDITABLE, this.height));
 
         // Lay out the components.
         DefaultFormBuilder builder = new DefaultFormBuilder(new FormLayout(LayoutFactory2.componentColumnSpec(2, 1, 2),

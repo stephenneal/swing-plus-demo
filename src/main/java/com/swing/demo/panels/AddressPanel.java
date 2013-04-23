@@ -28,7 +28,8 @@ public class AddressPanel extends PlusJPanel<AddressModel> {
     // private JTextField state;
     private JComboBox states;
     private JLabel suburbLabel;
-    private JTextField suburb;
+    // private JTextField suburb;
+    private JComboBox suburbs;
 
     public AddressPanel(AddressModel model, BindingService bindingService) {
         super(model, bindingService);
@@ -45,7 +46,8 @@ public class AddressPanel extends PlusJPanel<AddressModel> {
         // this.state = new JTextField();
         this.states = new JComboBox();
         this.suburbLabel = newFieldLabel();
-        this.suburb = new JTextField();
+        // this.suburb = new JTextField();
+        this.suburbs = new JComboBox();
 
         // Bind the Swing components to the model
         bind(TextBinding.text(model, Properties.ADDRESS1_LABEL, this.address1Label));
@@ -62,10 +64,7 @@ public class AddressPanel extends PlusJPanel<AddressModel> {
         bind(ListBinding.model(model, Properties.POSTCODES, this.postcodes));
         bind(ListBinding.selection(model, Properties.POSTCODE, this.postcodes));
         bind(StateBinding.editable(model, Properties.POSTCODE_EDITABLE, this.postcodes));
-
-        bind(TextBinding.text(model, Properties.SUBURB_LABEL, this.suburbLabel));
-        bind(TextBinding.text(model, Properties.SUBURB, this.suburb));
-        bind(StateBinding.editable(model, Properties.SUBURB_EDITABLE, this.suburb));
+        bind(StateBinding.enabled(model, Properties.POSTCODE_ENABLED, this.postcodes));
 
         bind(TextBinding.text(model, Properties.STATE_LABEL, this.stateLabel));
         // bind(TextBinding.text(model, Properties.STATE, this.state));
@@ -73,6 +72,14 @@ public class AddressPanel extends PlusJPanel<AddressModel> {
         bind(ListBinding.model(model, Properties.STATES, this.states));
         bind(ListBinding.selection(model, Properties.STATE, this.states));
         bind(StateBinding.editable(model, Properties.STATE_EDITABLE, this.states));
+        bind(StateBinding.enabled(model, Properties.STATE_ENABLED, this.states));
+
+        bind(TextBinding.text(model, Properties.SUBURB_LABEL, this.suburbLabel));
+        // bind(TextBinding.text(model, Properties.SUBURB, this.suburb));
+        bind(ListBinding.model(model, Properties.SUBURBS, this.suburbs));
+        bind(ListBinding.selection(model, Properties.SUBURB, this.suburbs));
+        bind(StateBinding.editable(model, Properties.SUBURB_EDITABLE, this.suburbs));
+        bind(StateBinding.enabled(model, Properties.SUBURB_ENABLED, this.suburbs));
 
         // Lay out the components.
         DefaultFormBuilder builder = new DefaultFormBuilder(new FormLayout(LayoutFactory2.componentColumnSpec(2, 1, 2),
@@ -84,7 +91,8 @@ public class AddressPanel extends PlusJPanel<AddressModel> {
         builder.append(this.address2, 5);
         builder.nextLine(2);
         builder.append(this.suburbLabel);
-        builder.append(this.suburb, 5);
+        // builder.append(this.suburb, 5);
+        builder.append(this.suburbs, 5);
         builder.nextLine(2);
         builder.append(this.postcodeLabel);
         // builder.append(this.postcode);

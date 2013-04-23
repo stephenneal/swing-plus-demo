@@ -7,9 +7,6 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Calendar;
 import java.util.List;
-import java.util.concurrent.Executors;
-import java.util.concurrent.ScheduledExecutorService;
-import java.util.concurrent.TimeUnit;
 
 import javax.swing.BorderFactory;
 import javax.swing.JFrame;
@@ -44,6 +41,7 @@ import com.swing.plus.mvc.DualModePresentationModel.ViewMode;
 @SuppressWarnings("serial")
 public class PanelsDemo extends JPanel {
 
+    @SuppressWarnings("unused")
     private static final Logger LOGGER = LoggerFactory.getLogger(PanelsDemo.class);
 
     public static void main(String[] args) {
@@ -92,9 +90,10 @@ public class PanelsDemo extends JPanel {
         // aModel.setAddress2("Doo Dah");
         raModel.setPostcodes(ObservableCollections.observableList(getPostcodes()));
         raModel.setPostcode("5000");
-        raModel.setSuburb("Happyville");
         raModel.setStates(ObservableCollections.observableList(getStates()));
         raModel.setState("SA");
+        raModel.setSuburb("Happyville");
+        raModel.setSuburbs(ObservableCollections.observableList(getSuburbs()));
         raModel.setTitle("Residential");
         raModel.setMode(ViewMode.READ_ONLY);
         AddressPanel resAddressPanel = new AddressPanel(raModel, bindingService);
@@ -105,9 +104,10 @@ public class PanelsDemo extends JPanel {
         // aModel.setAddress2("Doo Dah");
         paModel.setPostcodes(ObservableCollections.observableList(getPostcodes()));
         paModel.setPostcode("5000");
-        paModel.setSuburb("Happyville");
         paModel.setStates(ObservableCollections.observableList(getStates()));
         paModel.setState("SA");
+        paModel.setSuburb("Happyville");
+        paModel.setSuburbs(ObservableCollections.observableList(getSuburbs()));
         paModel.setTitle("Postal");
         paModel.setMode(ViewMode.READ_ONLY);
         AddressPanel posAddressPanel = new AddressPanel(paModel, bindingService);
@@ -149,59 +149,11 @@ public class PanelsDemo extends JPanel {
         builder.nextLine(2);
         builder.append(personDetailsPanel);
 
-        // Schedule some tasks to update combo boxes (they are properly updated)
-        final ScheduledExecutorService pool = Executors.newScheduledThreadPool(2);
-        pool.schedule(new Runnable() {
-            @Override
-            public void run() {
-                LOGGER.info("changing states list");
-                paModel.setStates(ObservableCollections.observableList(getStates2()));
-            }
-        }, 5, TimeUnit.SECONDS);
-        pool.schedule(new Runnable() {
-            @Override
-            public void run() {
-                LOGGER.info("adding postcodes");
-                paModel.getPostcodes().addAll(getPostcodes2());
-            }
-        }, 10, TimeUnit.SECONDS);
-        pool.shutdown();
-
         return panel;
     }
 
     private static void setDefaultBorder(JPanel panel, String title) {
         panel.setBorder(BorderFactory.createCompoundBorder(BorderFactory.createTitledBorder(title), Borders.DIALOG));
-    }
-
-    private static List<String> getPostcodes() {
-        List<String> postcodes = new ArrayList<String>();
-        postcodes.add("5000");
-        postcodes.add("5001");
-        postcodes.add("5003");
-        postcodes.add("5004");
-        postcodes.add("5005");
-        postcodes.add("5006");
-        return postcodes;
-    }
-
-    private static List<String> getPostcodes2() {
-        List<String> postcodes = new ArrayList<String>();
-        postcodes.add("5007");
-        postcodes.add("5008");
-        postcodes.add("5009");
-        postcodes.add("5010");
-        postcodes.add("5011");
-        postcodes.add("5012");
-        return postcodes;
-    }
-
-    private static List<String> getStates() {
-        return Arrays.asList(EnumConverter.nameToString(States.values()));
-    }
-
-    private static List<String> getStates2() {
-        return Arrays.asList(EnumConverter.nameToString(States.QLD, States.VIC));
     }
 
     private static List<String> getEyeColours() {
@@ -210,6 +162,30 @@ public class PanelsDemo extends JPanel {
 
     private static List<String> getGenders() {
         return Arrays.asList(EnumConverter.wordsTitleCase(Genders.values()));
+    }
+
+    private static List<String> getPostcodes() {
+        List<String> l = new ArrayList<String>();
+        l.add("5000");
+        l.add("5001");
+        l.add("5003");
+        l.add("5004");
+        l.add("5005");
+        l.add("5006");
+        return l;
+    }
+
+    private static List<String> getStates() {
+        return Arrays.asList(EnumConverter.nameToString(States.values()));
+    }
+
+    private static List<String> getSuburbs() {
+        List<String> l = new ArrayList<String>();
+        l.add("Anywhere");
+        l.add("Happyville");
+        l.add("Here And There");
+        l.add("Suburbia");
+        return l;
     }
 
 }
