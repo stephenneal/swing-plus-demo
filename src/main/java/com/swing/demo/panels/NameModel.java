@@ -3,7 +3,7 @@ package com.swing.demo.panels;
 import org.jdesktop.beansbinding.Property;
 
 import com.swing.plus.mvc.DualModePresentationModel;
-import com.swing.plus.mvc.ReadOnlyParticipant;
+import com.swing.plus.mvc.ReadOnlySwitch;
 
 /**
  * Presentation model for the {@link NamePanel}.
@@ -43,7 +43,7 @@ public class NameModel extends DualModePresentationModel {
         return this.nameEditable;
     }
 
-    @ReadOnlyParticipant
+    @ReadOnlySwitch
     public void setNameEditable(boolean newValue) {
         boolean oldValue = this.nameEditable;
         this.nameEditable = newValue;

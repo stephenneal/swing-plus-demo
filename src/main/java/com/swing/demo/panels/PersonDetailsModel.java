@@ -7,7 +7,7 @@ import org.jdesktop.beansbinding.Property;
 import org.jdesktop.observablecollections.ObservableList;
 
 import com.swing.plus.mvc.DualModePresentationModel;
-import com.swing.plus.mvc.ReadOnlyParticipant;
+import com.swing.plus.mvc.ReadOnlySwitch;
 
 /**
  * Presentation model for the {@link PersonDetailsPanel}.
@@ -73,7 +73,7 @@ public class PersonDetailsModel extends DualModePresentationModel {
         return this.eyeColourEditable;
     }
 
-    @ReadOnlyParticipant
+    @ReadOnlySwitch
     public void setEyeColourEditable(boolean newValue) {
         boolean oldValue = this.eyeColourEditable;
         this.eyeColourEditable = newValue;
@@ -84,7 +84,7 @@ public class PersonDetailsModel extends DualModePresentationModel {
         return this.eyeColourEnabled;
     }
 
-    @ReadOnlyParticipant
+    @ReadOnlySwitch
     public void setEyeColourEnabled(boolean newValue) {
         boolean oldValue = this.eyeColourEnabled;
         this.eyeColourEnabled = newValue;
@@ -125,7 +125,7 @@ public class PersonDetailsModel extends DualModePresentationModel {
         return this.genderEditable;
     }
 
-    @ReadOnlyParticipant
+    @ReadOnlySwitch
     public void setGenderEditable(boolean newValue) {
         boolean oldValue = this.genderEditable;
         this.genderEditable = newValue;
@@ -136,7 +136,7 @@ public class PersonDetailsModel extends DualModePresentationModel {
         return this.genderEnabled;
     }
 
-    @ReadOnlyParticipant
+    @ReadOnlySwitch
     public void setGenderEnabled(boolean newValue) {
         boolean oldValue = this.genderEnabled;
         this.genderEnabled = newValue;
@@ -177,7 +177,7 @@ public class PersonDetailsModel extends DualModePresentationModel {
         return this.heightEditable;
     }
 
-    @ReadOnlyParticipant
+    @ReadOnlySwitch
     public void setHeightEditable(boolean newValue) {
         boolean oldValue = this.heightEditable;
         this.heightEditable = newValue;

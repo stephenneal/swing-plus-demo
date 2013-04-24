@@ -5,7 +5,7 @@ import java.util.Date;
 import org.jdesktop.beansbinding.Property;
 
 import com.swing.plus.mvc.DualModePresentationModel;
-import com.swing.plus.mvc.ReadOnlyParticipant;
+import com.swing.plus.mvc.ReadOnlySwitch;
 
 /**
  * Presentation model for the {@link PersonPanel}.
@@ -84,7 +84,7 @@ public class PersonModel extends DualModePresentationModel {
         return this.dateOfBirthEditable;
     }
 
-    @ReadOnlyParticipant
+    @ReadOnlySwitch
     public void setDateOfBirthEditable(boolean newValue) {
         boolean oldValue = this.dateOfBirthEditable;
         this.dateOfBirthEditable = newValue;
@@ -115,7 +115,7 @@ public class PersonModel extends DualModePresentationModel {
         return this.dateDeceasedEditable;
     }
 
-    @ReadOnlyParticipant
+    @ReadOnlySwitch
     public void setDateDeceasedEditable(boolean newValue) {
         boolean oldValue = this.dateDeceasedEditable;
         this.dateDeceasedEditable = newValue;
@@ -146,7 +146,7 @@ public class PersonModel extends DualModePresentationModel {
         return this.firstNameEditable;
     }
 
-    @ReadOnlyParticipant
+    @ReadOnlySwitch
     public void setFirstNameEditable(boolean newValue) {
         boolean oldValue = this.firstNameEditable;
         this.firstNameEditable = newValue;
@@ -177,7 +177,7 @@ public class PersonModel extends DualModePresentationModel {
         return this.idEditable;
     }
 
-    @ReadOnlyParticipant
+    @ReadOnlySwitch
     public void setIdEditable(boolean newValue) {
         boolean oldValue = this.idEditable;
         this.idEditable = newValue;
@@ -208,7 +208,7 @@ public class PersonModel extends DualModePresentationModel {
         return this.otherNamesEditable;
     }
 
-    @ReadOnlyParticipant
+    @ReadOnlySwitch
     public void setOtherNamesEditable(boolean newValue) {
         boolean oldValue = this.otherNamesEditable;
         this.otherNamesEditable = newValue;
@@ -239,7 +239,7 @@ public class PersonModel extends DualModePresentationModel {
         return this.surnameEditable;
     }
 
-    @ReadOnlyParticipant
+    @ReadOnlySwitch
     public void setSurnameEditable(boolean newValue) {
         boolean oldValue = this.surnameEditable;
         this.surnameEditable = newValue;

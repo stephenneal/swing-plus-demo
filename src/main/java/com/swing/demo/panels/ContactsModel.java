@@ -5,7 +5,7 @@ import java.util.Date;
 import org.jdesktop.beansbinding.Property;
 
 import com.swing.plus.mvc.DualModePresentationModel;
-import com.swing.plus.mvc.ReadOnlyParticipant;
+import com.swing.plus.mvc.ReadOnlySwitch;
 
 /**
  * Presentation model for the {@link ContactsPanel}.
@@ -77,7 +77,7 @@ public class ContactsModel extends DualModePresentationModel {
         return this.emailEditable;
     }
 
-    @ReadOnlyParticipant
+    @ReadOnlySwitch
     public void setEmailEditable(boolean newValue) {
         boolean oldValue = this.emailEditable;
         this.emailEditable = newValue;
@@ -108,7 +108,7 @@ public class ContactsModel extends DualModePresentationModel {
         return this.faxEditable;
     }
 
-    @ReadOnlyParticipant
+    @ReadOnlySwitch
     public void setFaxEditable(boolean newValue) {
         boolean oldValue = this.faxEditable;
         this.faxEditable = newValue;
@@ -139,7 +139,7 @@ public class ContactsModel extends DualModePresentationModel {
         return this.phoneHomeEditable;
     }
 
-    @ReadOnlyParticipant
+    @ReadOnlySwitch
     public void setPhoneHomeEditable(boolean newValue) {
         boolean oldValue = this.phoneHomeEditable;
         this.phoneHomeEditable = newValue;
@@ -170,7 +170,7 @@ public class ContactsModel extends DualModePresentationModel {
         return this.phoneMobileEditable;
     }
 
-    @ReadOnlyParticipant
+    @ReadOnlySwitch
     public void setPhoneMobileEditable(boolean newValue) {
         boolean oldValue = this.phoneMobileEditable;
         this.phoneMobileEditable = newValue;
@@ -201,7 +201,7 @@ public class ContactsModel extends DualModePresentationModel {
         return this.phoneWorkEditable;
     }
 
-    @ReadOnlyParticipant
+    @ReadOnlySwitch
     public void setPhoneWorkEditable(boolean newValue) {
         boolean oldValue = this.phoneWorkEditable;
         this.phoneWorkEditable = newValue;

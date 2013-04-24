@@ -7,7 +7,7 @@ import org.jdesktop.beansbinding.Property;
 import org.jdesktop.observablecollections.ObservableList;
 
 import com.swing.plus.mvc.DualModePresentationModel;
-import com.swing.plus.mvc.ReadOnlyParticipant;
+import com.swing.plus.mvc.ReadOnlySwitch;
 
 /**
  * Presentation model for the {@link AddressPanel}.
@@ -91,7 +91,7 @@ public class AddressModel extends DualModePresentationModel {
         return this.address1Editable;
     }
 
-    @ReadOnlyParticipant
+    @ReadOnlySwitch
     public void setAddress1Editable(boolean newValue) {
         boolean oldValue = this.address1Editable;
         this.address1Editable = newValue;
@@ -122,7 +122,7 @@ public class AddressModel extends DualModePresentationModel {
         return this.address2Editable;
     }
 
-    @ReadOnlyParticipant
+    @ReadOnlySwitch
     public void setAddress2Editable(boolean newValue) {
         boolean oldValue = this.address2Editable;
         this.address2Editable = newValue;
@@ -153,7 +153,7 @@ public class AddressModel extends DualModePresentationModel {
         return this.postcodeEditable;
     }
 
-    @ReadOnlyParticipant
+    @ReadOnlySwitch
     public void setPostcodeEditable(boolean newValue) {
         boolean oldValue = this.postcodeEditable;
         this.postcodeEditable = newValue;
@@ -164,7 +164,7 @@ public class AddressModel extends DualModePresentationModel {
         return this.postcodeEnabled;
     }
 
-    @ReadOnlyParticipant
+    @ReadOnlySwitch
     public void setPostcodeEnabled(boolean newValue) {
         boolean oldValue = this.postcodeEnabled;
         this.postcodeEnabled = newValue;
@@ -205,7 +205,7 @@ public class AddressModel extends DualModePresentationModel {
         return this.stateEditable;
     }
 
-    @ReadOnlyParticipant
+    @ReadOnlySwitch
     public void setStateEditable(boolean newValue) {
         boolean oldValue = this.stateEditable;
         this.stateEditable = newValue;
@@ -216,7 +216,7 @@ public class AddressModel extends DualModePresentationModel {
         return this.stateEnabled;
     }
 
-    @ReadOnlyParticipant
+    @ReadOnlySwitch
     public void setStateEnabled(boolean newValue) {
         boolean oldValue = this.stateEnabled;
         this.stateEnabled = newValue;
@@ -257,7 +257,7 @@ public class AddressModel extends DualModePresentationModel {
         return this.suburbEditable;
     }
 
-    @ReadOnlyParticipant
+    @ReadOnlySwitch
     public void setSuburbEditable(boolean newValue) {
         boolean oldValue = this.suburbEditable;
         this.suburbEditable = newValue;
@@ -268,7 +268,7 @@ public class AddressModel extends DualModePresentationModel {
         return this.suburbEnabled;
     }
 
-    @ReadOnlyParticipant
+    @ReadOnlySwitch
     public void setSuburbEnabled(boolean newValue) {
         boolean oldValue = this.suburbEnabled;
         this.suburbEnabled = newValue;
