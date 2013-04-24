@@ -138,7 +138,7 @@ public class LayoutFactory2 {
                 spec.append(", " + relatedGap + ", ");
             }
             if (customPre != null && customPre.trim().length() > 0) {
-                spec.append(customPre + ", " + RELATED_GAP_COL + ", ");
+                spec.append(customPre + ", " + relatedGap + ", ");
             }
             if (grow != null) {
                 for (int j : grow) {
