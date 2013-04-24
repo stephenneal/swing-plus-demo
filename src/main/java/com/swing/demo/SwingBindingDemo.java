@@ -205,7 +205,7 @@ public class SwingBindingDemo extends JPanel {
         public void setField1Label(String newValue) {
             String oldValue = this.field1Label;
             this.field1Label = newValue;
-            getPropertyChangeSupport().firePropertyChange("field1Label", oldValue, newValue);
+            firePropertyChange("field1Label", oldValue, newValue);
         }
 
         public String getField2Label() {
@@ -215,7 +215,7 @@ public class SwingBindingDemo extends JPanel {
         public void setField2Label(String newValue) {
             String oldValue = this.field2Label;
             this.field2Label = newValue;
-            getPropertyChangeSupport().firePropertyChange("field2Label", oldValue, newValue);
+            firePropertyChange("field2Label", oldValue, newValue);
         }
 
         public String getField3Label() {
@@ -225,7 +225,7 @@ public class SwingBindingDemo extends JPanel {
         public void setField3Label(String newValue) {
             String oldValue = this.field3Label;
             this.field3Label = newValue;
-            getPropertyChangeSupport().firePropertyChange("field3Label", oldValue, newValue);
+            firePropertyChange("field3Label", oldValue, newValue);
         }
 
         public String getField4Label() {
@@ -235,7 +235,7 @@ public class SwingBindingDemo extends JPanel {
         public void setField4Label(String newValue) {
             String oldValue = this.field4Label;
             this.field4Label = newValue;
-            getPropertyChangeSupport().firePropertyChange("field4Label", oldValue, newValue);
+            firePropertyChange("field4Label", oldValue, newValue);
         }
 
         public Date getDate() {
@@ -245,7 +245,7 @@ public class SwingBindingDemo extends JPanel {
         public void setDate(Date newValue) {
             Date oldValue = this.date;
             this.date = newValue;
-            getPropertyChangeSupport().firePropertyChange("date", oldValue, newValue);
+            firePropertyChange("date", oldValue, newValue);
         }
 
         public Date getDateTime() {
@@ -255,7 +255,7 @@ public class SwingBindingDemo extends JPanel {
         public void setDateTime(Date newValue) {
             Date oldValue = this.dateTime;
             this.dateTime = newValue;
-            getPropertyChangeSupport().firePropertyChange("dateTime", oldValue, newValue);
+            firePropertyChange("dateTime", oldValue, newValue);
         }
 
         public Double getDuble() {
@@ -265,7 +265,7 @@ public class SwingBindingDemo extends JPanel {
         public void setDuble(Double newValue) {
             Double oldValue = this.duble;
             this.duble = newValue;
-            getPropertyChangeSupport().firePropertyChange("duble", oldValue, newValue);
+            firePropertyChange("duble", oldValue, newValue);
         }
 
         public ObservableList<String> getStringList() {
@@ -275,7 +275,7 @@ public class SwingBindingDemo extends JPanel {
         public void setStringList(ObservableList<String> newValue) {
             ObservableList<String> oldValue = this.stringList;
             this.stringList = newValue;
-            getPropertyChangeSupport().firePropertyChange("stringList", oldValue, newValue);
+            firePropertyChange("stringList", oldValue, newValue);
         }
 
         public String getString() {
@@ -285,7 +285,7 @@ public class SwingBindingDemo extends JPanel {
         public void setString(String newValue) {
             String oldValue = this.string;
             this.string = newValue;
-            getPropertyChangeSupport().firePropertyChange("string", oldValue, newValue);
+            firePropertyChange("string", oldValue, newValue);
         }
 
         public ObservableList<BindingPrototypeModel> getTestBeans() {
@@ -295,7 +295,7 @@ public class SwingBindingDemo extends JPanel {
         public void setTestBeans(ObservableList<BindingPrototypeModel> newValue) {
             ObservableList<BindingPrototypeModel> oldValue = this.testBeans;
             this.testBeans = newValue;
-            getPropertyChangeSupport().firePropertyChange("testBeans", oldValue, newValue);
+            firePropertyChange("testBeans", oldValue, newValue);
         }
 
         public ObservableList<BindingPrototypeModel> getTestBeansSelected() {
@@ -305,7 +305,7 @@ public class SwingBindingDemo extends JPanel {
         public void setTestBeansSelected(ObservableList<BindingPrototypeModel> newValue) {
             ObservableList<BindingPrototypeModel> oldValue = this.testBeansSelected;
             this.testBeansSelected = newValue;
-            getPropertyChangeSupport().firePropertyChange("testBeansSelected", oldValue, newValue);
+            firePropertyChange("testBeansSelected", oldValue, newValue);
         }
 
     }

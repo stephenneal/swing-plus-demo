@@ -66,7 +66,7 @@ public class PersonDetailsModel extends DualModePresentationModel {
     public void setEyeColour(String newValue) {
         String oldValue = this.eyeColour;
         this.eyeColour = newValue;
-        getPropertyChangeSupport().firePropertyChange("eyeColour", oldValue, newValue);
+        firePropertyChange("eyeColour", oldValue, newValue);
     }
 
     public boolean getEyeColourEditable() {
@@ -77,7 +77,7 @@ public class PersonDetailsModel extends DualModePresentationModel {
     public void setEyeColourEditable(boolean newValue) {
         boolean oldValue = this.eyeColourEditable;
         this.eyeColourEditable = newValue;
-        getPropertyChangeSupport().firePropertyChange("eyeColourEditable", oldValue, newValue);
+        firePropertyChange("eyeColourEditable", oldValue, newValue);
     }
 
     public boolean getEyeColourEnabled() {
@@ -88,7 +88,7 @@ public class PersonDetailsModel extends DualModePresentationModel {
     public void setEyeColourEnabled(boolean newValue) {
         boolean oldValue = this.eyeColourEnabled;
         this.eyeColourEnabled = newValue;
-        getPropertyChangeSupport().firePropertyChange("eyeColourEnabled", oldValue, newValue);
+        firePropertyChange("eyeColourEnabled", oldValue, newValue);
     }
 
     public String getEyeColourLabel() {
@@ -98,7 +98,7 @@ public class PersonDetailsModel extends DualModePresentationModel {
     public void setEyeColourLabel(String newValue) {
         String oldValue = this.eyeColourLabel;
         this.eyeColourLabel = newValue;
-        getPropertyChangeSupport().firePropertyChange("eyeColourLabel", oldValue, newValue);
+        firePropertyChange("eyeColourLabel", oldValue, newValue);
     }
 
     public ObservableList<String> getEyeColours() {
@@ -108,7 +108,7 @@ public class PersonDetailsModel extends DualModePresentationModel {
     public void setEyeColours(ObservableList<String> newValue) {
         ObservableList<String> oldValue = this.eyeColours;
         this.eyeColours = newValue;
-        getPropertyChangeSupport().firePropertyChange("eyeColours", oldValue, newValue);
+        firePropertyChange("eyeColours", oldValue, newValue);
     }
 
     public String getGender() {
@@ -118,7 +118,7 @@ public class PersonDetailsModel extends DualModePresentationModel {
     public void setGender(String newValue) {
         String oldValue = this.gender;
         this.gender = newValue;
-        getPropertyChangeSupport().firePropertyChange("gender", oldValue, newValue);
+        firePropertyChange("gender", oldValue, newValue);
     }
 
     public boolean getGenderEditable() {
@@ -129,7 +129,7 @@ public class PersonDetailsModel extends DualModePresentationModel {
     public void setGenderEditable(boolean newValue) {
         boolean oldValue = this.genderEditable;
         this.genderEditable = newValue;
-        getPropertyChangeSupport().firePropertyChange("genderEditable", oldValue, newValue);
+        firePropertyChange("genderEditable", oldValue, newValue);
     }
 
     public boolean getGenderEnabled() {
@@ -140,7 +140,7 @@ public class PersonDetailsModel extends DualModePresentationModel {
     public void setGenderEnabled(boolean newValue) {
         boolean oldValue = this.genderEnabled;
         this.genderEnabled = newValue;
-        getPropertyChangeSupport().firePropertyChange("genderEnabled", oldValue, newValue);
+        firePropertyChange("genderEnabled", oldValue, newValue);
     }
 
     public String getGenderLabel() {
@@ -150,7 +150,7 @@ public class PersonDetailsModel extends DualModePresentationModel {
     public void setGenderLabel(String newValue) {
         String oldValue = this.genderLabel;
         this.genderLabel = newValue;
-        getPropertyChangeSupport().firePropertyChange("genderLabel", oldValue, newValue);
+        firePropertyChange("genderLabel", oldValue, newValue);
     }
 
     public ObservableList<String> getGenders() {
@@ -160,7 +160,7 @@ public class PersonDetailsModel extends DualModePresentationModel {
     public void setGenders(ObservableList<String> newValue) {
         ObservableList<String> oldValue = this.genders;
         this.genders = newValue;
-        getPropertyChangeSupport().firePropertyChange("genders", oldValue, newValue);
+        firePropertyChange("genders", oldValue, newValue);
     }
 
     public String getHeight() {
@@ -170,7 +170,7 @@ public class PersonDetailsModel extends DualModePresentationModel {
     public void setHeight(String newValue) {
         String oldValue = this.height;
         this.height = newValue;
-        getPropertyChangeSupport().firePropertyChange("height", oldValue, newValue);
+        firePropertyChange("height", oldValue, newValue);
     }
 
     public boolean getHeightEditable() {
@@ -181,7 +181,7 @@ public class PersonDetailsModel extends DualModePresentationModel {
     public void setHeightEditable(boolean newValue) {
         boolean oldValue = this.heightEditable;
         this.heightEditable = newValue;
-        getPropertyChangeSupport().firePropertyChange("heightEditable", oldValue, newValue);
+        firePropertyChange("heightEditable", oldValue, newValue);
     }
 
     public String getHeightLabel() {
@@ -191,7 +191,7 @@ public class PersonDetailsModel extends DualModePresentationModel {
     public void setHeightLabel(String newValue) {
         String oldValue = this.heightLabel;
         this.heightLabel = newValue;
-        getPropertyChangeSupport().firePropertyChange("heightLabel", oldValue, newValue);
+        firePropertyChange("heightLabel", oldValue, newValue);
     }
 
 }

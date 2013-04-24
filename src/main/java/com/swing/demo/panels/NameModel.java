@@ -36,7 +36,7 @@ public class NameModel extends DualModePresentationModel {
     public void setName(String newValue) {
         String oldValue = this.name;
         this.name = newValue;
-        getPropertyChangeSupport().firePropertyChange("name", oldValue, newValue);
+        firePropertyChange("name", oldValue, newValue);
     }
 
     public boolean getNameEditable() {
@@ -47,7 +47,7 @@ public class NameModel extends DualModePresentationModel {
     public void setNameEditable(boolean newValue) {
         boolean oldValue = this.nameEditable;
         this.nameEditable = newValue;
-        getPropertyChangeSupport().firePropertyChange("nameEditable", oldValue, newValue);
+        firePropertyChange("nameEditable", oldValue, newValue);
     }
 
     public String getNameLabel() {
@@ -57,7 +57,7 @@ public class NameModel extends DualModePresentationModel {
     public void setNameLabel(String newValue) {
         String oldValue = this.nameLabel;
         this.nameLabel = newValue;
-        getPropertyChangeSupport().firePropertyChange("nameLabel", oldValue, newValue);
+        firePropertyChange("nameLabel", oldValue, newValue);
     }
 
 }
