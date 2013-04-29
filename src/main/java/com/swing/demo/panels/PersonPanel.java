@@ -8,15 +8,18 @@ import com.jgoodies.forms.layout.FormLayout;
 import com.swing.binding.bbb.BindingService;
 import com.swing.binding.bbb.StateBinding;
 import com.swing.binding.bbb.TextBinding;
+import com.swing.binding.bbb.ToedterCalendarBinding;
 import com.swing.demo.layout.LayoutFactory2;
 import com.swing.demo.panels.PersonModel.Properties;
 import com.swing.plus.mvc.PlusJPanel;
+import com.toedter.calendar.JDateChooser;
 
 @SuppressWarnings("serial")
 public class PersonPanel extends PlusJPanel<PersonModel> {
 
     private JLabel dateOfBirthLabel;
-    private JTextField dateOfBirth;
+    // private JTextField dateOfBirth;
+    private JDateChooser dateOfBirth;
     private JLabel dateDeceasedLabel;
     private JTextField dateDeceased;
     private JLabel idLabel;
@@ -33,7 +36,7 @@ public class PersonPanel extends PlusJPanel<PersonModel> {
 
         // Create all the Swing components
         this.dateOfBirthLabel = newFieldLabel();
-        this.dateOfBirth = new JTextField();
+        this.dateOfBirth = new JDateChooser();
         this.dateDeceasedLabel = newFieldLabel();
         this.dateDeceased = new JTextField();
         this.idLabel = newFieldLabel();
@@ -47,8 +50,9 @@ public class PersonPanel extends PlusJPanel<PersonModel> {
 
         // Bind the Swing components to the model
         bind(TextBinding.text(model, Properties.DATE_OF_BIRTH_LABEL, this.dateOfBirthLabel));
-        bind(TextBinding.text(model, Properties.DATE_OF_BIRTH, this.dateOfBirth));
-        bind(StateBinding.editable(model, Properties.DATE_OF_BIRTH_EDITABLE, this.dateOfBirth));
+        // bind(TextBinding.text(model, Properties.DATE_OF_BIRTH, this.dateOfBirth));
+        bind(ToedterCalendarBinding.date(model, Properties.DATE_OF_BIRTH, this.dateOfBirth));
+        // bind(StateBinding.editable(model, Properties.DATE_OF_BIRTH_EDITABLE, this.dateOfBirth));
 
         bind(TextBinding.text(model, Properties.DATE_DECEASED_LABEL, this.dateDeceasedLabel));
         bind(TextBinding.text(model, Properties.DATE_DECEASED, this.dateDeceased));
