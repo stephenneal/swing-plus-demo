@@ -1,5 +1,9 @@
 package com.swing.demo.panels;
 
+import java.awt.Color;
+import java.beans.PropertyChangeEvent;
+import java.beans.PropertyChangeListener;
+import java.util.Calendar;
 import java.util.Date;
 
 import org.jdesktop.beansbinding.Property;
@@ -36,6 +40,8 @@ public class PersonModel extends DualModePresentationModel {
         public static Property<PersonModel, Boolean> ID_EDITABLE = create("idEditable");
         public static Property<PersonModel, Boolean> OTHER_NAMES_EDITABLE = create("otherNamesEditable");
         public static Property<PersonModel, Boolean> SURNAME_EDITABLE = create("surnameEditable");
+
+        public static Property<PersonModel, Color> DATE_DECEASED_FG = create("dateDeceasedForeground");
     }
 
     private Date dateOfBirth;
@@ -59,6 +65,8 @@ public class PersonModel extends DualModePresentationModel {
     private String otherNamesLabel;
     private String surnameLabel;
 
+    private Color dateDeceasedForeground;
+
     public PersonModel() {
         super();
         // Set defaults for label values
@@ -68,6 +76,20 @@ public class PersonModel extends DualModePresentationModel {
         this.idLabel = "Id";
         this.otherNamesLabel = "Other name(s)";
         this.surnameLabel = "Surname";
+
+        addPropertyChangeListener("dateDeceased", new PropertyChangeListener() {
+            @Override
+            public void propertyChange(PropertyChangeEvent evt) {
+                Date d = (Date) evt.getNewValue();
+                if (d == null) {
+                    setDateDeceasedForeground(Color.BLACK);
+                } else if (d.after(Calendar.getInstance().getTime())) {
+                    setDateDeceasedForeground(Color.RED);
+                } else {
+                    setDateDeceasedForeground(Color.BLUE);
+                }
+            }
+        });
     }
 
     public Date getDateOfBirth() {
@@ -120,6 +142,16 @@ public class PersonModel extends DualModePresentationModel {
         boolean oldValue = this.dateDeceasedEditable;
         this.dateDeceasedEditable = newValue;
         firePropertyChange("dateDeceasedEditable", oldValue, newValue);
+    }
+
+    public Color getDateDeceasedForeground() {
+        return this.dateDeceasedForeground;
+    }
+
+    public void setDateDeceasedForeground(Color newValue) {
+        Color oldValue = this.dateDeceasedForeground;
+        this.dateDeceasedForeground = newValue;
+        firePropertyChange("dateDeceasedForeground", oldValue, newValue);
     }
 
     public String getDateDeceasedLabel() {

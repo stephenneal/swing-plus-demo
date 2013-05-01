@@ -57,6 +57,7 @@ public class PersonPanel extends PlusJPanel<PersonModel> {
         bind(TextBinding.text(model, Properties.DATE_DECEASED_LABEL, this.dateDeceasedLabel));
         bind(TextBinding.text(model, Properties.DATE_DECEASED, this.dateDeceased));
         bind(StateBinding.editable(model, Properties.DATE_DECEASED_EDITABLE, this.dateDeceased));
+        bind(StateBinding.foreground(model, Properties.DATE_DECEASED_FG, this.dateDeceased));
 
         bind(TextBinding.text(model, Properties.ID_LABEL, this.idLabel));
         bind(TextBinding.text(model, Properties.ID, this.id));
