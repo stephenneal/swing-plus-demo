@@ -2,8 +2,8 @@ package com.swing.demo.panels;
 
 import org.jdesktop.beansbinding.Property;
 
-import com.swing.plus.mvc.DualModePresentationModel;
-import com.swing.plus.mvc.ReadOnlySwitch;
+import com.swing.demo.mvc.DualModePresentationModel;
+import com.swing.demo.mvc.ReadOnlySwitch;
 
 /**
  * Presentation model for the {@link NamePanel}.

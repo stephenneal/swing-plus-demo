@@ -27,7 +27,7 @@ import com.swing.demo.panels.PersonDetailsPanel;
 import com.swing.demo.panels.PersonModel;
 import com.swing.demo.panels.PersonPanel;
 import com.swing.plus.PanelFactory;
-import com.swing.plus.mvc.DualModePresentationModel.ViewMode;
+import com.swing.demo.mvc.DualModePresentationModel.ViewMode;
 
 public class PanelsDemoFactory {
 

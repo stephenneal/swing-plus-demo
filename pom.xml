@@ -14,7 +14,7 @@
 		<!-- Swing related dependencies -->
         <dependency>
             <groupId>swing.plus</groupId>
-            <artifactId>swing-plus</artifactId>
+            <artifactId>swingutils</artifactId>
             <version>0.0.1-SNAPSHOT</version>
         </dependency>
         <dependency>

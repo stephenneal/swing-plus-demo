@@ -6,8 +6,8 @@ import java.util.List;
 import org.jdesktop.beansbinding.Property;
 import org.jdesktop.observablecollections.ObservableList;
 
-import com.swing.plus.mvc.DualModePresentationModel;
-import com.swing.plus.mvc.ReadOnlySwitch;
+import com.swing.demo.mvc.DualModePresentationModel;
+import com.swing.demo.mvc.ReadOnlySwitch;
 
 /**
  * Presentation model for the {@link PersonDetailsPanel}.
